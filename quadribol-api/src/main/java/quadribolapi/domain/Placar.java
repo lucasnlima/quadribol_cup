@@ -18,6 +18,8 @@ public class Placar {
 	@Column(nullable = false)
 	private String estatisticas;
 
+	// add métodos marcar gol time A/B
+
 	public Placar(int golsA, int golsB, String estat) {
         this.golsParticipanteA = golsA;
         this.golsParticipanteB = golsB;
@@ -53,12 +55,6 @@ public class Placar {
         System.out.printf("Gols Participante A: %d", this.getGolsParticipanteA());
         System.out.printf("Gols Participante B: %d", this.getGolsParticipanteB());
         System.out.printf("Estatisticas: %s", this.getEstatisticas());
-        
-    }
-
-	public void editarPlacar() {
-        
-        // FAZER
         
     }
 

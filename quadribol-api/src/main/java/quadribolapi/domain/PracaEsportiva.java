@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import java.util.List;
+
 @Entity
 public class PracaEsportiva {
 	
@@ -71,10 +73,10 @@ public class PracaEsportiva {
 
     public void exibirInfo() {
         
-        System.out.printf("ID: 0x%016X", this.getId);
-        System.out.printf("Nome: %s", this.getNome);
-        System.out.printf("Capacidade: %d", this.getCapacidade);
-        System.out.printf("Endereco: %s", this.getEndereco);
+        System.out.printf("ID: 0x%016X", this.getId());
+        System.out.printf("Nome: %s", this.getNome());
+        System.out.printf("Capacidade: %d", this.getCapacidade());
+        System.out.printf("Endereco: %s", this.getEndereco());
         System.out.println("Acomodacoes: ");
         for(int i = 0; i < this.acomodacoes.size(); i++) {
             System.out.println(this.acomodacoes.get(i));

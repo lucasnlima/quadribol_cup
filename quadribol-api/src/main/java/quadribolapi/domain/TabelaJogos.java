@@ -6,50 +6,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import java.util.List;
+
 @Entity
 public class TabelaJogos {
 	
 	@Column(nullable = false)
 	private List<Fase> fase;
-	
-	@Column(nullable = false)
-	private List<Jogo> partidas;
-
-    @Column(nullable = false)
-	private String chaveamento;
 
 
-	public TabelaJogos(List<Fase> fase, List<Jogo> jogo, String chave) {
+	public TabelaJogos(List<Fase> fase) {
         this.fase = fase;
-        this.partidas = jogo;
-        this.chaveamento = chave;
     }
-    
-
-    public String getChaveamento() {
-		return this.chaveamento;
-	}
-
-	public void setChaveamento(String novoChaveamento) {
-		this.chaveamento = novoChaveamento;
-	}
-
     
     public void consultarTabela(Long id, String nome, int participantes) {
-        //fazer
+        // retorna todos os jogos de todas as fases
     }
+
+    // criar método para consultar fase específica pelo nome
 
     public void inicializarTabela(String nome, int participantes) {
-        //fazer
+        // receber lista de participantes e de locais
+        // verificar se o número de participantes é par
+        // gerar os jogos com os pares de participantes 
+        // inicializar a fase
     }
-	
-	public void alterarTabela(String nome, int participantes) {
-        //fazer
-    }
-
-	public void definirChaveamento(String nome, int participantes) {
-        //fazer
-    }
-
 
 }
