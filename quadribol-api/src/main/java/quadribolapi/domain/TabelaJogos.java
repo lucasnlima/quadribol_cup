@@ -10,16 +10,16 @@ import javax.persistence.Id;
 public class TabelaJogos {
 	
 	@Column(nullable = false)
-	private Fase fase;
+	private List<Fase> fase;
 	
 	@Column(nullable = false)
-	private Jogo partidas;
+	private List<Jogo> partidas;
 
     @Column(nullable = false)
 	private String chaveamento;
 
 
-	public TabelaJogos(Fase fase, Jogo jogo, String chave) {
+	public TabelaJogos(List<Fase> fase, List<Jogo> jogo, String chave) {
         this.fase = fase;
         this.partidas = jogo;
         this.chaveamento = chave;
