@@ -9,6 +9,10 @@ import javax.persistence.Id;
 @Entity
 public class Placar {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private final Long id;
+	
     @Column(nullable = false)
 	private int golsParticipanteA;
 
@@ -21,7 +25,8 @@ public class Placar {
 	// add métodos marcar gol time A/B
 
 	public Placar(int golsA, int golsB, String estat) {
-        this.golsParticipanteA = golsA;
+        this.id = null;
+		this.golsParticipanteA = golsA;
         this.golsParticipanteB = golsB;
         this.estatisticas = estat;
     }

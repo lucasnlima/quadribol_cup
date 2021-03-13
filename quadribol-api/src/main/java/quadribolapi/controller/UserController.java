@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import quadribolapi.domain.User;
-import quadribolapi.repository.UserRepository;
+import quadribolapi.domain.Usuario;
+import quadribolapi.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 	
 	@Autowired
-	private UserRepository userRepoitory;
+	private UsuarioRepository userRepoitory;
 	
 	@GetMapping
-	public List<User> getUsers() {
+	public List<Usuario> getUsers() {
 		return userRepoitory.findAll();
 	}
 	
 	@PostMapping
-	public User createUser(@RequestBody User user) {
+	public Usuario createUser(@RequestBody Usuario user) {
 		return userRepoitory.save(user);
 	}
 	

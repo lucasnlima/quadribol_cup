@@ -1,5 +1,8 @@
 package quadribolapi.domain;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +15,10 @@ public class Equipe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String nome;
-	private Jogador[] elenco;
-	private Jogo[] historicoPartidas; // mudar para lista
+	private List<Jogador> elenco;
+	private Jogo[] historicoPartidas;
 	
-	public Equipe(int id, String nome, Jogador[] elenco) {
+	public Equipe(int id, String nome, List<Jogador> elenco) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -33,13 +36,17 @@ public class Equipe {
 		this.nome = nome;
 	}
 	public Jogador[] getElenco() {
-		return elenco;
+		return elenco.toArray(new Jogador[23]);
 	}
 	public void setElenco(Jogador[] elenco) {
-		this.elenco = elenco;
+		this.elenco = Arrays.asList(elenco);
 	}
-
-	// adicionar e remover jogadores individualmente
+	
+	public void addJogador(Jogador jogador) {
+		this.elenco.add(jogador);
+	}
+	
+	// remover jogadores individualmente
 	
 	
 

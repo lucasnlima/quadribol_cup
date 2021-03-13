@@ -3,9 +3,9 @@ package quadribolapi.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import quadribolapi.domain.User;
+import quadribolapi.domain.Usuario;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 }
