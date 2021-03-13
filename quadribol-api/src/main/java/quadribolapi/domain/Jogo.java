@@ -31,7 +31,6 @@ public class Jogo {
     @Column(nullable = false)
 	private PracaEsportiva local;
 
-	// add métodos marcar gol time A/B
 
 	public Jogo(Long ide, String dat, Placar plac, Equipe partA, Equipe partB, Arbitro arb, PracaEsportiva loc) {
         this.id = ide;

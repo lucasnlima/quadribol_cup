@@ -1,12 +1,15 @@
 package quadribolapi.domain;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import java.security.Key;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 public class PracaEsportiva {
@@ -24,15 +27,15 @@ public class PracaEsportiva {
     @Column(nullable = false)
 	private final String endereco;
 
-    @Column(nullable = false)
-    private List<String> acomodacoes;
+    @ElementCollection
+    Map<Key,String> acomodacoes;
 
 	public PracaEsportiva(Long ide, String nom, int cap, String end, List<String> aco) {
         this.id = ide;
         this.nome = nom;
         this.capacidade = cap;
         this.endereco = end;
-        this.acomodacoes = aco;
+        this.acomodacoes = (Map<Key, String>) aco;
     }
     
     public Long getId() {
@@ -59,12 +62,12 @@ public class PracaEsportiva {
 		return this.endereco;
 	}
 
-	public List<String> getAcomodacoes() {
+	public Map<Key, String> getAcomodacoes() {
         return this.acomodacoes;
     }
     
     public void addAcomodacao(String aco) {
-        this.acomodacoes.add(aco);
+        ((List<String>) this.acomodacoes).add(aco);
     }
 
     public void removeAcomodacao(String aco) {
