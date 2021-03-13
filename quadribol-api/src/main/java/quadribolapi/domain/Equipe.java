@@ -13,7 +13,7 @@ public class Equipe {
 	private long id;
 	private String nome;
 	private Jogador[] elenco;
-	//private Jogo[] partidads;
+	private Jogo[] historicoPartidas; // mudar para lista
 	
 	public Equipe(int id, String nome, Jogador[] elenco) {
 		super();
@@ -38,6 +38,8 @@ public class Equipe {
 	public void setElenco(Jogador[] elenco) {
 		this.elenco = elenco;
 	}
+
+	// adicionar e remover jogadores individualmente
 	
 	
 

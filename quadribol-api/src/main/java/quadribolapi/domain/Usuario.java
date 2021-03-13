@@ -24,7 +24,7 @@ public class Usuario {
 
 	public Usuario(Long ide, String nom, String em, String sen){
         this.id = ide;
-        this.nome = mon;
+        this.nome = nom;
         this.email = em;
         this.senha = sen;
     }
@@ -54,7 +54,7 @@ public class Usuario {
     }
 
     public void setSenha(String novas) {
-        this.senha = nova;
+        this.senha = novas;
     }
 
 }

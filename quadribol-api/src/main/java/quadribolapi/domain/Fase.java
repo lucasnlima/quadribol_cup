@@ -19,6 +19,8 @@ public class Fase {
     @Column(nullable = false)
 	private int numeroParticipantes;
 
+	// Lista de jogos da fase
+
 
 	public Fase(Long id, String nome, int participantes) {
         this.id = id;
@@ -47,7 +49,7 @@ public class Fase {
 	}
 
     
-    public void incluirFase(Long id, String nome, int participantes) {
+    public Fase incluirFase(Long id, String nome, int participantes) {
         Fase novaFase = new Fase(id, nome, participantes);
 		return novaFase;
     }
