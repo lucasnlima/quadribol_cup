@@ -11,7 +11,7 @@ public class Jogo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long idJogo;
+	private final Long ID_JOGO;
 	
 	@Column(nullable = false)
 	private String data;
@@ -34,8 +34,11 @@ public class Jogo {
     @Column(nullable = false)
 	private Arbitro arbitro;
 
-	public Jogo(Long id, String data, Arena local, Time timeA, Time timeB, int pontosA, int pontosB, Arbitro arbitro){
-        this.idJogo = id;
+    private static int contadorJogo = 0;
+
+	public Jogo(String data, Arena local, Time timeA, Time timeB, int pontosA, int pontosB, Arbitro arbitro){
+        this.idJogo = contadorJogo;
+        contadorJogo++;
         this.data = data;
         this.local = local;
         this.timeA = timeA;
@@ -46,7 +49,7 @@ public class Jogo {
     }
     
     public Long getIdJogo() {
-		return this.idJogo;
+		return this.ID_JOGO;
 	}
 
 	public String getData() {
@@ -128,7 +131,7 @@ public class Jogo {
         System.out.printf("Pontos time B: %d", this.getPontosB());
     }
 
-    public int totalPontos() {
+    public int totalPontosJogo() {
         int total = this.getPontosA()+this.getPontosB();
         System.out.printf("Total de pontos no jogo: %d", total);
         return total;

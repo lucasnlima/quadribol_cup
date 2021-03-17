@@ -11,7 +11,7 @@ public class Jogador {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long idJogador;
+	private final Long ID_JOGADOR;
 	
 	@Column(nullable = false)
 	private String nomeJogador;
@@ -25,8 +25,11 @@ public class Jogador {
     @Column(nullable = false)
 	private int pontos;
 
-	public Jogador(Long id, String nome, int idade, String posicao, int pontos){
-        this.idJogador = id;
+    private static int contadorJogador = 0;
+
+	public Jogador(String nome, int idade, String posicao, int pontos){
+        this.idJogador = contadorJogador;
+        contadorJogador++;
         this.nomeJogador = nome;
         this.idadeJogador = idade;
         this.posicao = posicao;
@@ -34,7 +37,7 @@ public class Jogador {
     }
     
     public Long getIdJogador() {
-		return this.idJogador;
+		return this.ID_JOGADOR;
 	}
 
 	public String getNomeJogador() {

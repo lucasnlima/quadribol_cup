@@ -9,11 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class GerenciadorUsuarios {
 	
-	private List<Usuario> usuarios;
-
-	public GerenciadorUsuarios(List<Usuario> usuarios){
-        this.usuarios = usuarios;
-    }
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
     
     public List<Usuario> getUsuarios() {
         return this.usuarios;

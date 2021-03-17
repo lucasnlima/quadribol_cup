@@ -11,7 +11,7 @@ public class Arbitro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long idArbitro;
+	private final Long ID_ARBITRO;
 	
 	@Column(nullable = false)
 	private String nomeArbitro;
@@ -19,14 +19,17 @@ public class Arbitro {
     @Column(nullable = false)
 	private int idadeArbitro;
 
-	public Arbitro(Long id, String nome, int idade){
-        this.idArbitro = id;
+	private static int contadorArbitro = 0;
+
+	public Arbitro(String nome, int idade){
+        this.idArbitro = contadorArbitro;
+		contadorArbitro++;
         this.nomeArbitro = nome;
         this.idadeArbitro = idade;
     }
     
     public Long getIdArbitro() {
-		return this.idArbitro;
+		return this.ID_ARBITRO;
 	}
 
 	public String getNomeArbitro() {

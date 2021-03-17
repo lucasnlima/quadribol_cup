@@ -12,11 +12,8 @@ public class Administrador extends Usuario {
     @Column(nullable = false)
 	private int ranking;
 
-	public Administrador(Long id, String nome, String email, String senha, int ranking){
-        this.idUsuario = id;
-        this.nomeUsuario = nome;
-        this.email = email;
-        this.senha = senha;
+	public Administrador(String nome, String email, String senha, int ranking){
+        this(nome, email, senha);
         this.ranking = ranking;
     }
 

@@ -11,7 +11,7 @@ public class Arena {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long idArena;
+	private final Long ID_ARENA;
 	
 	@Column(nullable = false)
 	private String nomeArena;
@@ -20,25 +20,26 @@ public class Arena {
 	private int capacidade;
 
     @Column(nullable = false)
-	private final String endereco;
+	private final String ENDERECO_ARENA;
 
     @Column(nullable = false)
-    private List<String> acomodacoes;
+    private List<Acomodacao> acomodacoes = new ArrayList<Acomodacao>();;
 
     @Column(nullable = false)
-    private List<String> transportes;
+    private List<Transporte> transportes = new ArrayList<Transporte>();;
 
-	public Arena(Long id, String nome, int capacidade, String endereco, List<String> acomodacoes, List<String> transportes){
-        this.idArena = id;
+    private static int contadorArena = 0;
+
+	public Arena(String nome, int capacidade, String endereco){
+        this.ID_ARENA = contadorArena;
+        contadorArena++;
         this.nomeArena = nome;
         this.capacidade = capacidade;
-        this.endereco = endereco;
-        this.acomodacoes = acomodacoes;
-        this.transportes = transportes;
+        this.ENDERECO_ARENA = endereco;
     }
     
     public Long getIdArena() {
-		return this.idArena;
+		return this.ID_ARENA;
 	}
 
 	public String getNomeArena() {
@@ -58,38 +59,38 @@ public class Arena {
 	}
 
     public String getEndereco() {
-		return this.endereco;
+		return this.ENDERECO_ARENA;
 	}
 
-    public List<String> getAcomodacoes() {
+    public List<Acomodacao> getAcomodacoes() {
         return this.acomodacoes;
     }
 
-    public void setAcomodacoes(List<String> novoAcomodacoes) {
+    public void setAcomodacoes(List<Acomodacao> novoAcomodacoes) {
         this.acomodacoes = novoAcomodacoes;
     }
 
-    public void addAcomodacao(String acomodacao) {
+    public void addAcomodacao(Acomodacao acomodacao) {
         this.acomodacoes.add(acomodacao);
     }
 
-    public void removeAcomodacao(String acomodacao) {
+    public void removeAcomodacao(Acomodacao acomodacao) {
         this.acomodacoes.remove(acomodacao);
     }
 
-    public List<String> getTransportes() {
+    public List<Transporte> getTransportes() {
         return this.transportes;
     }
 
-    public void setTransportes(List<String> novoTransporte) {
+    public void setTransportes(List<Transporte> novoTransporte) {
         this.transportes = novoTransporte;
     }
 
-    public void addTransporte(String transporte) {
+    public void addTransporte(Transporte transporte) {
         this.transportes.add(transporte);
     }
 
-    public void removeTransporte(String transporte) {
+    public void removeTransporte(Transporte transporte) {
         this.transportes.remove(transporte);
     }
 

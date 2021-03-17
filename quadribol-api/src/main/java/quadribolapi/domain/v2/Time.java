@@ -6,31 +6,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import quadribolapi.domain.Jogo;
+
 @Entity
 public class Time {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long idTime;
+	private final Long ID_TIME;
 	
 	@Column(nullable = false)
 	private String nomeTime;
 
     @Column(nullable = false)
-	private List<Jogador> elenco;
+	private List<Jogador> elenco = new ArrayList<Jogador>();
 
     @Column(nullable = false)
-	private List<Jogo> partidas;
+	private List<Jogo> partidas = new ArrayList<Jogo>();
 
-	public Time(Long id, String nome, List<Jogador> elenco, List<Jogo> partidas){
-        this.idTime = id;
+    private static int contadorTime = 0;
+
+	public Time(String nome){
+        this.idTime = contadorTime;
+        contadorTime++;
         this.nomeTime = nome;
         this.elenco = elenco;
         this.partidas = partidas;
     }
     
     public Long getIdTime() {
-		return this.idTime;
+		return this.ID_TIME;
 	}
 
 	public String getNomeTime() {
@@ -73,4 +78,16 @@ public class Time {
         this.partidas.remove(partida);
     }
 
+    public int totalPontosJogos() {
+        int total = 0;
+        for(Jogo temp : this.partidas) {
+            if(temp.getTimeA() == this) {
+                total += temp.getPontosA();
+            }
+            else {
+                total += temp.getPontosB();
+            }
+        }
+        return total;
+    }
 }
