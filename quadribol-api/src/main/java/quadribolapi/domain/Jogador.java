@@ -12,9 +12,11 @@ public class Jogador {
 	private int idade;
 	private String posicao;
 	
-	public Jogador(int id, String nome, int idade, String posicao) {
-		super();
-		this.id = id;
+	public Jogador() {
+		 super();
+	}
+	
+	public Jogador(String nome, int idade, String posicao) {
 		this.nome = nome;
 		this.idade = idade;
 		this.posicao = posicao;

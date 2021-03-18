@@ -11,13 +11,17 @@ public class Arbitro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private long id;
 	
 	@Column(nullable = false)
 	private String nome;
 
     @Column(nullable = false)
 	private int idade;
+    
+    public Arbitro() {
+		super();
+	}
 
 	public Arbitro(Long ide, String nom, int idad) {
         this.id = ide;
