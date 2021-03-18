@@ -11,7 +11,7 @@ public class Jogo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private final int id;
 	
 	@Column(nullable = false)
 	private String data;
@@ -32,7 +32,7 @@ public class Jogo {
 	private PracaEsportiva local;
 
 
-	public Jogo(Long ide, String dat, Placar plac, Equipe partA, Equipe partB, Arbitro arb, PracaEsportiva loc) {
+	public Jogo(int ide, String dat, Placar plac, Equipe partA, Equipe partB, Arbitro arb, PracaEsportiva loc) {
         this.id = ide;
         this.data = dat;
         this.placar = plac;
@@ -42,7 +42,7 @@ public class Jogo {
         this.local = loc;
     }
     
-    public Long getId() {
+    public int getId() {
 		return id;
 	}
 
@@ -56,22 +56,6 @@ public class Jogo {
 
     public Placar getPlacar() {
 		return this.placar;
-	}
-
-	public void setPlacar(Placar novap) {
-		this.placar = novap;
-	}
-
-    public Equipe getParticipanteA() {
-		return this.participanteA;
-	}
-
-    public void setParticipanteA(Equipe novaeqa) {
-		this.participanteA = novaeqa;
-	}
-
-    public Equipe getParticipanteB() {
-		return this.participanteB;
 	}
 
     public void setParticipanteB(Equipe novaeqb) {
@@ -96,17 +80,21 @@ public class Jogo {
 
     public void exibirInfoJogo() {
         
-        System.out.printf("ID: 0x%016X", this.getId());
-        System.out.printf("Participantes: %s x %s", this.getParticipanteA(), this.getParticipanteB()); // colocar nome da equipe
-        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
-        System.out.printf("Local: %s", this.getPracaEsportiva().getNome());
-        System.out.printf("Placar: %s", this.getPlacar().getEstatisticas());
+        System.out.printf("\nID: 0x%016X\n", this.getId());
+        System.out.printf("Participantes: %s x %s\n", this.getParticipanteA().getNome(), this.getParticipanteB().getNome()); // colocar nome da equipe
+        System.out.printf("Placar: %d x %d\n", this.getPlacar().getGolsParticipanteA(), this.getPlacar().getGolsParticipanteB());
+		System.out.printf("Arbitro: %s\n", this.getArbitro().getNome());
+        System.out.printf("Local: %s\n", this.getPracaEsportiva().getNome());
 
     }
 
-    public void alterarJogo() {
+    public void alterarJogo(char time) {
         
-        // FAZER
+        if (time == 'A') {
+			this.placar.marcaGolA();
+		} else if (time == 'B') {
+			this.placar.marcaGolB();
+		}
         
     }
 

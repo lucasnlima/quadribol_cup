@@ -22,8 +22,6 @@ public class Placar {
 	@Column(nullable = false)
 	private String estatisticas;
 
-	// add métodos marcar gol time A/B
-
 	public Placar(int golsA, int golsB, String estat) {
         this.id = null;
 		this.golsParticipanteA = golsA;
@@ -51,15 +49,23 @@ public class Placar {
 		return this.estatisticas;
 	}
 
+	public void marcaGolA() {
+		this.golsParticipanteA = this.golsParticipanteA + 1;
+	}
+
+	public void marcaGolB() {
+		this.golsParticipanteB = this.golsParticipanteB + 1;
+	}
+
     public void setEstatisticas(String novae) {
 		this.estatisticas = novae;
 	}
 
     public void exibirPlacar() {
         
-        System.out.printf("Gols Participante A: %d", this.getGolsParticipanteA());
-        System.out.printf("Gols Participante B: %d", this.getGolsParticipanteB());
-        System.out.printf("Estatisticas: %s", this.getEstatisticas());
+        System.out.printf("\nGols Participante A: %d\n", this.getGolsParticipanteA());
+        System.out.printf("Gols Participante B: %d\n", this.getGolsParticipanteB());
+        System.out.printf("Estatisticas: %s\n", this.getEstatisticas());
         
     }
 

@@ -16,7 +16,7 @@ public class PracaEsportiva {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private final int id;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -28,17 +28,17 @@ public class PracaEsportiva {
 	private final String endereco;
 
     @ElementCollection
-    Map<Key,String> acomodacoes;
+    List<String> acomodacoes;
 
-	public PracaEsportiva(Long ide, String nom, int cap, String end, List<String> aco) {
-        this.id = ide;
+	public PracaEsportiva(int i, String nom, int cap, String end, List<String> aco) {
+        this.id = i;
         this.nome = nom;
         this.capacidade = cap;
         this.endereco = end;
-        this.acomodacoes = (Map<Key, String>) aco;
+        this.acomodacoes = aco;
     }
     
-    public Long getId() {
+    public int getId() {
 		return id;
 	}
 
@@ -62,7 +62,7 @@ public class PracaEsportiva {
 		return this.endereco;
 	}
 
-	public Map<Key, String> getAcomodacoes() {
+	public List<String> getAcomodacoes() {
         return this.acomodacoes;
     }
     

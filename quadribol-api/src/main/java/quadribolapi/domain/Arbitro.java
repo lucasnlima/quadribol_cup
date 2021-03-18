@@ -11,7 +11,7 @@ public class Arbitro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private final int id;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -19,13 +19,13 @@ public class Arbitro {
     @Column(nullable = false)
 	private int idade;
 
-	public Arbitro(Long ide, String nom, int idad) {
+	public Arbitro(int ide, String nom, int idad) {
         this.id = ide;
         this.nome = nom;
         this.idade = idad;
     }
     
-    public Long getId() {
+    public int getId() {
 		return id;
 	}
 
@@ -47,9 +47,9 @@ public class Arbitro {
 
     public void exibirInfoArbitro() {
         
-        System.out.printf("ID: 0x%016X", this.getId());
-        System.out.printf("Nome: %s", this.getNome());
-        System.out.printf("Idade: %d", this.getIdade());
+        System.out.printf("\nID: 0x%016X\n", this.getId());
+        System.out.printf("Nome: %s\n", this.getNome());
+        System.out.printf("Idade: %d\n", this.getIdade());
         
     }
 
