@@ -44,4 +44,8 @@ public class Transporte {
 		this.enderecoTransporte = novoEndereco;
 	}
 
+	public void exibirInfoTransporte () {
+		// imprime info transporte
+	}
+
 }

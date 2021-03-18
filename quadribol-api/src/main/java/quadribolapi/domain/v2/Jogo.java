@@ -46,6 +46,7 @@ public class Jogo {
         this.pontosA = pontosA;
         this.pontosB = pontosB;
         this.arbitro = arbitro;
+        // adicionar jogo ao time quando o jogo for criado
     }
     
     public Long getIdJogo() {

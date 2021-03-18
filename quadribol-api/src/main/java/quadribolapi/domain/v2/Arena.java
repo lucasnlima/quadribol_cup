@@ -94,4 +94,8 @@ public class Arena {
         this.transportes.remove(transporte);
     }
 
+    public exibirInfoArena() {
+        // imprime todas as informacoes da arena
+    }
+
 }

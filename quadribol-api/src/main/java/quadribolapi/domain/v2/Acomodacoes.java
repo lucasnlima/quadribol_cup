@@ -44,4 +44,10 @@ public class Acomodacao {
 		return this.ENDERECO_ACOMODACAO;
 	}
 
+	public exibirInfoAcomodacao () {
+		System.out.printf("ID: 0x%016X", this.getIdAcomodacao());
+        System.out.printf("Nome: %s", this.getNomeAcomodacao());
+        System.out.printf("Endereco: %s", this.getEndereco());
+	}
+
 }

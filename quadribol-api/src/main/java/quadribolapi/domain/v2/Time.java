@@ -90,4 +90,8 @@ public class Time {
         }
         return total;
     }
+
+    public void exibirInfoTime() {
+        // imprime info time
+    }
 }
