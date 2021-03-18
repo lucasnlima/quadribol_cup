@@ -2,44 +2,57 @@ package quadribolapi.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Jogo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private long id;
 	
 	@Column(nullable = false)
+	
 	private String data;
-
-    @Column(nullable = false)
-	private Placar placar;
-
-    @Column(nullable = false)
-	private Equipe participanteA;
-
-    @Column(nullable = false)
-	private Equipe participanteB;
-
-    @Column(nullable = false)
-	private Arbitro arbitro;
-
-    @Column(nullable = false)
+	
+    @ManyToOne
 	private PracaEsportiva local;
 
+	@ManyToOne
+    private Fase fase;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	private Equipe equipeA;
+ 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	private Equipe equipeB;
 
-	public Jogo(Long ide, String dat, Placar plac, Equipe partA, Equipe partB, Arbitro arb, PracaEsportiva loc) {
+	private int pontosA;
+	
+	private int pontosB;
+
+    @ManyToOne
+	private Arbitro arbitro;
+    
+    public Jogo() {
+		super();
+	}
+
+
+	public Jogo(Long ide, String dat,PracaEsportiva loc, Fase fase, Equipe partA, Equipe partB, Arbitro arb) {
         this.id = ide;
         this.data = dat;
-        this.placar = plac;
-        this.participanteA = partA;
-        this.participanteB = partB;
-        this.arbitro = arb;
         this.local = loc;
+        this.fase = fase;
+        this.pontosA = 0;
+        this.pontosB = 0;
+        this.equipeA = partA;
+        this.equipeB = partB;
+        this.arbitro = arb;
     }
     
     public Long getId() {
@@ -54,29 +67,6 @@ public class Jogo {
 		this.data = novad;
 	}
 
-    public Placar getPlacar() {
-		return this.placar;
-	}
-
-	public void setPlacar(Placar novap) {
-		this.placar = novap;
-	}
-
-    public Equipe getParticipanteA() {
-		return this.participanteA;
-	}
-
-    public void setParticipanteA(Equipe novaeqa) {
-		this.participanteA = novaeqa;
-	}
-
-    public Equipe getParticipanteB() {
-		return this.participanteB;
-	}
-
-    public void setParticipanteB(Equipe novaeqb) {
-		this.participanteB = novaeqb;
-	}
 
     public Arbitro getArbitro() {
 		return this.arbitro;
@@ -94,17 +84,65 @@ public class Jogo {
 		this.local = novol;
 	}
 
-    public void exibirInfoJogo() {
-        
-        System.out.printf("ID: 0x%016X", this.getId());
-        System.out.printf("Participantes: %s x %s", this.getParticipanteA(), this.getParticipanteB()); // colocar nome da equipe
-        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
-        System.out.printf("Local: %s", this.getPracaEsportiva().getNome());
-        System.out.printf("Placar: %s", this.getPlacar().getEstatisticas());
+    public PracaEsportiva getLocal() {
+		return local;
+	}
 
-    }
+	public void setLocal(PracaEsportiva local) {
+		this.local = local;
+	}
 
-    public void alterarJogo() {
+	public Fase getFase() {
+		return fase;
+	}
+
+	public void setFase(Fase fase) {
+		this.fase = fase;
+	}
+
+	public Equipe getEquipeA() {
+		return equipeA;
+	}
+
+	public void setEquipeA(Equipe equipeA) {
+		this.equipeA = equipeA;
+	}
+
+	public Equipe getEquipeB() {
+		return equipeB;
+	}
+
+	public void setEquipeB(Equipe equipeB) {
+		this.equipeB = equipeB;
+	}
+
+	public int getPontosA() {
+		return pontosA;
+	}
+
+	public void setPontosA(int pontosA) {
+		this.pontosA = pontosA;
+	}
+
+	public int getPontosB() {
+		return pontosB;
+	}
+
+	public void setPontosB(int pontosB) {
+		this.pontosB = pontosB;
+	}
+	
+	 public void exibirInfoJogo() {
+	        
+	        System.out.printf("ID: 0x%016X", this.getId());
+	        System.out.printf("Participantes: %s x %s", this.getEquipeA(), this.getEquipeB()); // colocar nome da equipe
+	        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
+	        System.out.printf("Local: %s", this.getPracaEsportiva().getNome());
+	        System.out.printf("Placar:%s x %s", this.getPontosA(), this.getPontosB());
+
+	    }
+
+	public void alterarJogo() {
         
         // FAZER
         
