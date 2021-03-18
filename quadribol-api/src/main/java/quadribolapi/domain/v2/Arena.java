@@ -23,10 +23,10 @@ public class Arena {
 	private final String ENDERECO_ARENA;
 
     @Column(nullable = false)
-    private List<Acomodacao> acomodacoes = new ArrayList<Acomodacao>();;
+    private List<Acomodacao> acomodacoes = new ArrayList<Acomodacao>();
 
     @Column(nullable = false)
-    private List<Transporte> transportes = new ArrayList<Transporte>();;
+    private List<Transporte> transportes = new ArrayList<Transporte>();
 
     private static int contadorArena = 0;
 

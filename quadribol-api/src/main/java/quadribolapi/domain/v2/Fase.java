@@ -103,4 +103,12 @@ public class Fase {
         return melhorTime;
     }
 
+    public void sortear() {
+        // usar a lista de participantes e sortear os confrontos, criando jogos e colocando na lista de jogos
+    }
+
+    public void exibirFase() {
+        // imprime todos os jogos da fase
+    }
+
 }
