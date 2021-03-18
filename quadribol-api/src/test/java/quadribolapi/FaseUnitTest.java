@@ -37,7 +37,7 @@ class FaseUnitTest {
 		String nomeFaseAlterado = faseTeste.getNome();
 		
 		//Verificação
-		assertEquals(4, numeroParticipantesAlterado);
+		assertEquals(8, numeroParticipantesAlterado);
 		assertEquals("Quartas", nomeFaseAlterado);
 	}
 
