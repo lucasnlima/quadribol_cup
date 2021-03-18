@@ -46,7 +46,9 @@ public class Jogo {
         this.pontosA = pontosA;
         this.pontosB = pontosB;
         this.arbitro = arbitro;
-        // adicionar jogo ao time quando o jogo for criado
+        // adiciona jogo ao time quando o jogo for criado
+        this.getTimeA().addPartida(this);
+        this.getTimeB().addPartida(this);
     }
     
     public Long getIdJogo() {

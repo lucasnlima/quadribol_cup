@@ -45,7 +45,9 @@ public class Transporte {
 	}
 
 	public void exibirInfoTransporte () {
-		// imprime info transporte
+		System.out.printf("ID: 0x%016X", this.getIdTransporte());
+        System.out.printf("Tipo: %s", this.getTipoTransporte());
+        System.out.printf("Endereco: %s", this.getEnderecoTransporte());
 	}
 
 }
