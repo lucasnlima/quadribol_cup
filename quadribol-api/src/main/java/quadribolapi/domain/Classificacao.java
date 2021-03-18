@@ -18,6 +18,11 @@ public class Classificacao {
 		this.equipe = equipe;
 	}
 	
+	 public Classificacao() {
+			super();
+		}
+
+	
 	public int getPosicao() {
 		return posicao;
 	}

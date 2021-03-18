@@ -11,7 +11,7 @@ public class Fase {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private long id;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -21,7 +21,10 @@ public class Fase {
 
 	// Lista de jogos da fase
 
-
+    public Fase() {
+        super();
+    }
+    
 	public Fase(Long id, String nome, int participantes) {
         this.id = id;
         this.nome = nome;

@@ -1,15 +1,13 @@
 package quadribolapi.domain;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import java.security.Key;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class PracaEsportiva {
@@ -25,7 +23,7 @@ public class PracaEsportiva {
 	private int capacidade;
 
     @Column(nullable = false)
-	private final String endereco;
+	private String endereco;
 
     @ElementCollection
     List<String> acomodacoes;
@@ -66,11 +64,11 @@ public class PracaEsportiva {
         return this.acomodacoes;
     }
     
-    public void addAcomodacao(String aco) {
-        ((List<String>) this.acomodacoes).add(aco);
+    public void addAcomodacao(Acomodacao aco) {
+        this.acomodacoes.add(aco);
     }
 
-    public void removeAcomodacao(String aco) {
+    public void removeAcomodacao(Acomodacao aco) {
         this.acomodacoes.remove(aco);
     }
 
