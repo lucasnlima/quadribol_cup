@@ -27,27 +27,27 @@ public class GerenciadorUsuarios {
         this.usuarios.remove(usuario);
     }
 
-    public void login(String nomeUsuario, String senha) {
+    public int login(String nomeUsuario, String senha) {
         for(Usuario temp : this.usuarios) {
 			if(temp.getNomeUsuario() == nomeUsuario) {
                 if(temp.getSenha() == senha) {
                     if(temp.getLogado() == true) {
                         System.out.println("Usuario ja logado");
-                        return;
+                        return 0;
                     }
                     else {
                         temp.trocaLogado();
                         System.out.println("Login feito com sucesso");
-                        return;
+                        return 1;
                     }
                 }
                 else {
                     System.out.println("Usuario ou senha incorretos");
-                    return;
+                    return 2;
                 }
             }
 		}
         System.out.println("Usuario inexistente");
-        return;
+        return 3;
     }
 }
