@@ -61,8 +61,4 @@ public class Equipe {
 		this.elenco.add(jogador);
 	}
 	
-	// remover jogadores individualmente
-	
-	
-
 }

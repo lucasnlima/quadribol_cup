@@ -25,10 +25,10 @@ public class Jogo {
 	@ManyToOne
     private Fase fase;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(optional = false)
 	private Equipe equipeA;
  
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
 	private Equipe equipeB;
 
 	private int pontosA;
@@ -37,6 +37,8 @@ public class Jogo {
 
     @ManyToOne
 	private Arbitro arbitro;
+    
+    private boolean finalizado;
     
     public Jogo() {
 		super();
@@ -53,9 +55,20 @@ public class Jogo {
         this.equipeA = partA;
         this.equipeB = partB;
         this.arbitro = arb;
+        this.finalizado = false;
     }
     
-    public Long getId() {
+    public boolean isFinalizado() {
+		return finalizado;
+	}
+
+
+	public void setFinalizado(boolean finalizado) {
+		this.finalizado = finalizado;
+	}
+
+
+	public Long getId() {
 		return id;
 	}
 
@@ -142,10 +155,13 @@ public class Jogo {
 
 	    }
 
-	public void alterarJogo() {
-        
-        // FAZER
-        
-    }
+	 public void marcarPontoA() {
+	      this.pontosA++;  
+	  }
+	 
+	 public void marcarPontoB() {
+		 this.pontosB++;
+	 }
+	       
 
 }

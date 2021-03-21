@@ -7,5 +7,7 @@ import quadribolapi.domain.Equipe;
 
 @Repository
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
-
+	
+	public Equipe getEquipeByNome(String nome);	
+	
 }

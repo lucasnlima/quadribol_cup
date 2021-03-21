@@ -19,7 +19,7 @@ public class Fase {
     @Column(nullable = false)
 	private int numeroParticipantes;
 
-	// Lista de jogos da fase
+	//Lista de jogos da fase
 
     public Fase() {
         super();
