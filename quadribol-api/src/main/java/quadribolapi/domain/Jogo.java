@@ -56,8 +56,17 @@ public class Jogo {
         if(arbitro != null) {
             this.arbitro = arbitro;
         }
+        this.finalizado = false;
         // adicionar jogo ao time quando o jogo for criado
     }
+
+    public boolean isFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(boolean finalizado) {
+		this.finalizado = finalizado;
+	}
     
     public Long getIdJogo() {
 		return this.ID_JOGO;
