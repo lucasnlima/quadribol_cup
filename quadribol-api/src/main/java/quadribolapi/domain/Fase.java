@@ -122,7 +122,7 @@ public class Fase {
     setJogos(jogos);
 }
 
-    //Sorteria participantes se lista de jogos já fora incializada sem definir os participantes de cada jogo
+    //Sorteia participantes se lista de jogos já fora incializada sem definir os participantes de cada jogo
     public void sortearParticipantes() {
     List<Time> temp = this.participantes;
     int i = 0;
