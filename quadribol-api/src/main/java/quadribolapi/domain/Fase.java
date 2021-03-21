@@ -122,26 +122,6 @@ public class Fase {
     setJogos(jogos);
 }
 
-    //Sorteia participantes se lista de jogos já fora incializada sem definir os participantes de cada jogo
-    public void sortearParticipantes() {
-    List<Time> temp = this.participantes;
-    int i = 0;
-        for (Jogo jogo : this.jogos) {
-            do {
-                int random1 = (int)Math.random()*(temp.size());
-                int random2 = (int)Math.random()*(temp.size());
-            } while (random1 === random2)
-            Time timeA = temp.get(random1);
-            Time timeB = temp.get(random2);
-            jogo.setTimeA(timeA);
-            jogo.setTimeB(timeB);
-            temp.remove(random1);
-            temp.remove(random2);
-            i++;
-    }
-}
-    
-
     public void exibirFase() {
         for(Jogo temp : this.jogos) {
             temp.exibirInfoJogo();
