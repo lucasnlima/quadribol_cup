@@ -1,5 +1,8 @@
 package quadribolapi.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +30,7 @@ public class Time {
     private static int contadorTime = 0;
 
 	public Time(String nome){
-        this.idTime = contadorTime;
+        this.ID_TIME = (long) contadorTime;
         contadorTime++;
         this.nomeTime = nome;
         this.elenco = elenco;

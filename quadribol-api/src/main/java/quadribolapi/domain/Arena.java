@@ -1,5 +1,8 @@
 package quadribolapi.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +34,7 @@ public class Arena {
     private static int contadorArena = 0;
 
 	public Arena(String nome, int capacidade, String endereco){
-        this.ID_ARENA = contadorArena;
+        this.ID_ARENA = (long) contadorArena;
         contadorArena++;
         this.nomeArena = nome;
         this.capacidade = capacidade;
@@ -94,7 +97,7 @@ public class Arena {
         this.transportes.remove(transporte);
     }
 
-    public exibirInfoArena() {
+    public void exibirInfoArena() {
         // imprime todas as informacoes da arena
     }
 

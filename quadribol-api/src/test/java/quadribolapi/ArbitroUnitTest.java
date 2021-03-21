@@ -8,9 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import quadribolapi.domain.Jogador;
 import quadribolapi.domain.Arbitro;
-import quadribolapi.domain.Equipe;
 
 class ArbitroUnitTest {
 
@@ -18,7 +16,7 @@ class ArbitroUnitTest {
 	void testCriarArbitro() {
 		
 		//Quando
-		Arbitro arb = new Arbitro(1, "Snape", 38);
+		Arbitro arb = new Arbitro("Snape", 38);
 		String novoNome = "Dumbledore";
 		int novaIdade = 187;
 		System.out.printf("\nTeste Unitário Arbitro - Antes das Modificações:");
@@ -26,12 +24,12 @@ class ArbitroUnitTest {
 		
 		//Ação
 		arb.setIdade(novaIdade);
-		arb.setNome(novoNome);
+		arb.setNomeArbitro(novoNome);
 		System.out.printf("\nTeste Unitário Arbitro - Depois das Modificações:");
 		arb.exibirInfoArbitro();
 		
 		//Verificação
-		assertEquals(arb.getNome(), novoNome);
+		assertEquals(arb.getNomeArbitro(), novoNome);
 		assertEquals(arb.getIdade(), novaIdade);
 		
 	}

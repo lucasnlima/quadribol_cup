@@ -11,48 +11,47 @@ public class Arbitro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private final Long ID_ARBITRO;
 	
 	@Column(nullable = false)
-	private String nome;
+	private String nomeArbitro;
 
     @Column(nullable = false)
-	private int idade;
-    
-    public Arbitro() {
-		super();
-	}
+	private int idadeArbitro;
 
-	public Arbitro(int ide, String nom, int idad) {
-        this.id = ide;
-        this.nome = nom;
-        this.idade = idad;
+	private static int contadorArbitro = 0;
+
+	public Arbitro(String nome, int idade){
+        this.ID_ARBITRO = (long) contadorArbitro;
+		contadorArbitro++;
+        this.nomeArbitro = nome;
+        this.idadeArbitro = idade;
     }
     
-    public int getId() {
-		return id;
+    public Long getIdArbitro() {
+		return this.ID_ARBITRO;
 	}
 
-    public String getNome() {
-		return this.nome;
+	public String getNomeArbitro() {
+		return this.nomeArbitro;
 	}
 
-	public void setNome(String novon) {
-		this.nome = novon;
+	public void setNomeArbitro(String novoNome) {
+		this.nomeArbitro = novoNome;
 	}
 
     public int getIdade() {
-		return this.idade;
-	}
+        return this.idadeArbitro;
+    }
 
-    public void setIdade(int novai) {
-		this.idade = novai;
-	}
+    public void setIdade(int novaIdade) {
+        this.idadeArbitro = novaIdade;
+    }
 
-    public void exibirInfoArbitro() {
+	public void exibirInfoArbitro() {
         
-        System.out.printf("\nID: 0x%016X\n", this.getId());
-        System.out.printf("Nome: %s\n", this.getNome());
+        System.out.printf("\nID: 0x%016X\n", this.getIdArbitro());
+        System.out.printf("Nome: %s\n", this.getNomeArbitro());
         System.out.printf("Idade: %d\n", this.getIdade());
         
     }

@@ -1,49 +1,75 @@
 package quadribolapi.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Jogador {
 	
 	@Id
-	private int id;
-	private String nome;
-	private int idade;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private final Long ID_JOGADOR;
+	
+	@Column(nullable = false)
+	private String nomeJogador;
+
+    @Column(nullable = false)
+	private int idadeJogador;
+
+    @Column(nullable = false)
 	private String posicao;
-	
-	public Jogador() {
-		 super();
+
+    @Column(nullable = false)
+	private int pontos;
+
+    private static int contadorJogador = 0;
+
+	public Jogador(String nome, int idade, String posicao, int pontos){
+        this.ID_JOGADOR = (long) contadorJogador;
+        contadorJogador++;
+        this.nomeJogador = nome;
+        this.idadeJogador = idade;
+        this.posicao = posicao;
+        this.pontos = pontos;
+    }
+    
+    public Long getIdJogador() {
+		return this.ID_JOGADOR;
 	}
-	
-	public Jogador(String nome, int idade, String posicao) {
-		this.nome = nome;
-		this.idade = idade;
-		this.posicao = posicao;
+
+	public String getNomeJogador() {
+		return this.nomeJogador;
 	}
-	
-	public int getId() {
-		return id;
+
+	public void setNomeJogador(String novoNome) {
+		this.nomeJogador = novoNome;
 	}
-	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public int getIdade() {
-		return idade;
-	}
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-	public String getPosicao() {
-		return posicao;
-	}
-	public void setPosicao(String posicao) {
-		this.posicao = posicao;
-	}
-	
-	
+
+    public int getIdade() {
+        return this.idadeJogador;
+    }
+
+    public void setIdade(int novaIdade) {
+        this.idadeJogador = novaIdade;
+    }
+
+    public String getPosicao() {
+        return this.posicao;
+    }
+
+    public void setPosicao(String novaPosicao) {
+        this.posicao = novaPosicao;
+    }
+
+    public int getPontos() {
+        return this.pontos;
+    }
+
+    public void setPontos(int novoPontos) {
+        this.pontos = novoPontos;
+    }
+
 }

@@ -10,75 +10,122 @@ import org.junit.jupiter.api.Test;
 
 import quadribolapi.domain.Jogador;
 import quadribolapi.domain.Jogo;
-import quadribolapi.domain.Placar;
-import quadribolapi.domain.PracaEsportiva;
+import quadribolapi.domain.Acomodacao;
 import quadribolapi.domain.Arbitro;
-import quadribolapi.domain.Equipe;
+import quadribolapi.domain.Arena;
+import quadribolapi.domain.Time;
 
 class JogoUnitTest {
 
 	@Test
 	void testCriarJogo() {
-		
 		//Quando
-		Placar plac = new Placar(0, 0, "Não aconteceu ainda.");
-		
-		Jogador jogA = new Jogador(1, "Ronaldinho Potter", 13, "Apanhador");
+		Jogador jogA = new Jogador("Ronaldinho Potter", 13, "Apanhador", 20);
 		List<Jogador> elencoA =  new ArrayList<Jogador>();
 		elencoA.add(jogA);
-		Equipe grifinoria = new Equipe(1, "Grifinoria", elencoA);
+		Time grifinoria = new Time("Grifinoria");
+		grifinoria.setElenco(elencoA);
 		
-		Jogador jogB = new Jogador(1, "Neville das Plantas", 18, "Zagueiro");
+		Jogador jogB = new Jogador("Neville das Plantas", 18, "Zagueiro", 20);
 		List<Jogador> elencoB =  new ArrayList<Jogador>();
 		elencoB.add(jogB);
-		Equipe corvinal = new Equipe(1, "Corvinal", elencoB);
+		Time corvinal = new Time("Corvinal");
+		corvinal.setElenco(elencoB);
 		
-		Arbitro arb = new Arbitro(1, "Snape", 38);
+		Arbitro arb = new Arbitro("Snape", 38);
 		
-		List<String> acomodacoes =  new ArrayList<String>();
-		acomodacoes.add("Hogsmeade");
-		PracaEsportiva hogwarts = new PracaEsportiva(1, "Hogwarts", 150000, "Rua dos Alfeneiros, 4", acomodacoes);
+		Acomodacao aco = new Acomodacao("Hogsmeade", "Rua dos Alfeneiros, 19");
+		List<Acomodacao> acomodacoes =  new ArrayList<Acomodacao>();
+		acomodacoes.add(aco);
+		Arena hogwarts = new Arena("Hogwarts", 150000, "Rua dos Alfeneiros, 4");
+		hogwarts.setAcomodacoes(acomodacoes);
 		
-		Jogo grifinoriaVsCorvinal = new Jogo(1, "25/08/1993", plac, grifinoria, corvinal, arb, hogwarts);
+		Jogo grifinoriaVsCorvinal = new Jogo("25/08/1993", hogwarts, grifinoria, corvinal, 0, 0, arb);
 		System.out.printf("\nTeste Unitário Jogo - Antes das Modificações:");
 		grifinoriaVsCorvinal.exibirInfoJogo();
 		
 		//Ação
-		Placar plac2 = new Placar(7, 1, "Foi triste.");
-		
-		Jogador jogC = new Jogador(1, "Cristiano Wesley", 8, "Atacante");
+		Jogador jogC = new Jogador("Cristiano Wesley", 8, "Atacante", 30);
 		List<Jogador> elencoC =  new ArrayList<Jogador>();
 		elencoA.add(jogC);
-		Equipe lufalufa = new Equipe(1, "Lufa-Lufa", elencoC);
+		Time lufalufa = new Time("Lufa-Lufa");
+		lufalufa.setElenco(elencoC);
 		
-		Jogador jogD = new Jogador(1, "Dino Secundário", 18, "Zagueiro");
+		Jogador jogD = new Jogador("Dino Secundário", 20, "Zagueiro", 30);
 		List<Jogador> elencoD =  new ArrayList<Jogador>();
-		elencoB.add(jogD);
-		Equipe sonserina = new Equipe(1, "Sonserina", elencoD);
+		elencoD.add(jogD);
+		Time sonserina = new Time("Sonserina");
+		sonserina.setElenco(elencoD);
 		
-		Arbitro arb2 = new Arbitro(1, "Dumbledore", 154);
+		Arbitro arb2 = new Arbitro("Dumbledore", 154);
 		
-		List<String> acomodacoes2 =  new ArrayList<String>();
-		acomodacoes2.add("Casa do Potter");
-		PracaEsportiva londres = new PracaEsportiva(1, "Londres", 150000, "Rua dos Alfeneiros, 5", acomodacoes2);
+		Acomodacao aco2 = new Acomodacao("Casa do Potter", "Rua dos Alfeneiros, 6");
+		List<Acomodacao> acomodacoes2 =  new ArrayList<Acomodacao>();
+		acomodacoes2.add(aco2);
+		Arena londres = new Arena("Londres", 170000, "Rua dos Alfeneiros, 5");
+		londres.setAcomodacoes(acomodacoes2);
 		
 		String data2 = "26/09/1994";
 		grifinoriaVsCorvinal.setData(data2);
 		grifinoriaVsCorvinal.setArbitro(arb2);
-		grifinoriaVsCorvinal.setPlacar(plac2);
-		grifinoriaVsCorvinal.setParticipanteA(lufalufa);
-		grifinoriaVsCorvinal.setParticipanteB(sonserina);
-		grifinoriaVsCorvinal.setPracaEsportiva(londres);
+		grifinoriaVsCorvinal.setTimeA(lufalufa);
+		grifinoriaVsCorvinal.setTimeB(sonserina);
+		grifinoriaVsCorvinal.setLocal(londres);
+		grifinoriaVsCorvinal.setPontosA(7);
+		grifinoriaVsCorvinal.setPontosB(1);
 		System.out.printf("\nTeste Unitário Jogo - Depois das Modificações:");
 		grifinoriaVsCorvinal.exibirInfoJogo();
 		
 		//Verificação
 		assertEquals(grifinoriaVsCorvinal.getData(), data2);
-		assertEquals(grifinoriaVsCorvinal.getArbitro().getNome(), "Dumbledore");
-		assertEquals(grifinoriaVsCorvinal.getPlacar().getGolsParticipanteA(), 7);
-		assertEquals(grifinoriaVsCorvinal.getParticipanteA().getNome(), "Lufa-Lufa");
-		assertEquals(grifinoriaVsCorvinal.getParticipanteB().getNome(), "Sonserina");
-		assertEquals(grifinoriaVsCorvinal.getPracaEsportiva().getNome(), "Londres");
+		assertEquals(grifinoriaVsCorvinal.getArbitro().getNomeArbitro(), "Dumbledore");
+		assertEquals(grifinoriaVsCorvinal.getTimeA().getNomeTime(), "Lufa-Lufa");
+		assertEquals(grifinoriaVsCorvinal.getTimeB().getNomeTime(), "Sonserina");
+		assertEquals(grifinoriaVsCorvinal.getLocal().getNomeArena(), "Londres");
+		assertEquals(grifinoriaVsCorvinal.getPontosA(), 7);
+		assertEquals(grifinoriaVsCorvinal.getPontosB(), 1);
+		
+	}
+	
+	@Test
+	void marcarPontos() {
+		//Quando
+		Jogador jogA = new Jogador("Ronaldinho Potter", 13, "Apanhador", 20);
+		List<Jogador> elencoA =  new ArrayList<Jogador>();
+		elencoA.add(jogA);
+		Time grifinoria = new Time("Grifinoria");
+		grifinoria.setElenco(elencoA);
+		
+		Jogador jogB = new Jogador("Neville das Plantas", 18, "Zagueiro", 20);
+		List<Jogador> elencoB =  new ArrayList<Jogador>();
+		elencoB.add(jogB);
+		Time corvinal = new Time("Corvinal");
+		corvinal.setElenco(elencoB);
+		
+		Arbitro arb = new Arbitro("Snape", 38);
+		
+		Acomodacao aco = new Acomodacao("Hogsmeade", "Rua dos Alfeneiros, 19");
+		List<Acomodacao> acomodacoes =  new ArrayList<Acomodacao>();
+		acomodacoes.add(aco);
+		Arena hogwarts = new Arena("Hogwarts", 150000, "Rua dos Alfeneiros, 4");
+		hogwarts.setAcomodacoes(acomodacoes);
+		
+		Jogo grifinoriaVsCorvinal = new Jogo("25/08/1993", hogwarts, grifinoria, corvinal, 0, 0, arb);
+		System.out.printf("\nTeste Unitário Jogo - Antes das Modificações:");
+		grifinoriaVsCorvinal.exibirInfoJogo();
+		
+		//Ação
+		grifinoriaVsCorvinal.marcarPonto("Grifinoria");
+		grifinoriaVsCorvinal.marcarPonto("Grifinoria");
+		grifinoriaVsCorvinal.marcarPonto("Corvinal");
+		System.out.printf("\nMarcando pontos para time inválido:");
+		grifinoriaVsCorvinal.marcarPonto("Sonserina");
+		System.out.printf("\nTeste Unitário Jogo - Depois das Modificações:");
+		grifinoriaVsCorvinal.exibirInfoJogo();
+		
+		//Verificação
+		assertEquals(grifinoriaVsCorvinal.getPontosA(), 2);
+		assertEquals(grifinoriaVsCorvinal.getPontosB(), 1);
 		
 	}
 

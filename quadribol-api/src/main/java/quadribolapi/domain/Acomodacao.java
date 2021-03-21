@@ -1,5 +1,6 @@
 package quadribolapi.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,39 +11,43 @@ public class Acomodacao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private float id;
+	private final Long ID_ACOMODACAO;
 	
-	private String nome;
-	
-	private String endereco;
+	@Column(nullable = false)
+	private String nomeAcomodacao;
 
-	public Acomodacao() {
-		super();
-	}
-	
-	public float getId() {
-		return id;
-	}
+    @Column(nullable = false)
+	private final String ENDERECO_ACOMODACAO;
 
-	public void setId(float id) {
-		this.id = id;
-	}
+    private static int contadorAcomodacao = 0;
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public Acomodacao(String nome, String endereco){
+        this.ID_ACOMODACAO = (long) contadorAcomodacao;
+        contadorAcomodacao++;
+        this.nomeAcomodacao = nome;
+        this.ENDERECO_ACOMODACAO = endereco;
+    }
+    
+    public Long getIdAcomodacao() {
+		return this.ID_ACOMODACAO;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getNomeAcomodacao() {
+		return this.nomeAcomodacao;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setNomeAcomodacao(String novoNome) {
+		this.nomeAcomodacao = novoNome;
 	}
-	
+
+    public String getEndereco() {
+		return this.ENDERECO_ACOMODACAO;
+	}
+
+	public void exibirInfoAcomodacao () {
+		System.out.printf("ID: 0x%016X", this.getIdAcomodacao());
+        System.out.printf("Nome: %s", this.getNomeAcomodacao());
+        System.out.printf("Endereco: %s", this.getEndereco());
+	}
 
 }
