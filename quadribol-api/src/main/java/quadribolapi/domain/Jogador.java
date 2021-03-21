@@ -28,11 +28,7 @@ public class Jogador {
     private static int contadorJogador = 0;
 
 	public Jogador(String nome, int idade, String posicao, int pontos){
-<<<<<<< HEAD
-        this.idJogador = contadorJogador;
-=======
         this.ID_JOGADOR = (long) contadorJogador;
->>>>>>> origin/branch-joao
         contadorJogador++;
         this.nomeJogador = nome;
         this.idadeJogador = idade;

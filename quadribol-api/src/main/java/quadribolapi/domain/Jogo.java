@@ -36,7 +36,6 @@ public class Jogo {
 
     private static int contadorJogo = 0;
 
-<<<<<<< HEAD
 	public Jogo(Time timeA, Time timeB, Arena local, String data, int pontosA, int pontosB, Arbitro arbitro){
         this.idJogo = contadorJogo;
         contadorJogo++;
@@ -57,18 +56,6 @@ public class Jogo {
         if(arbitro) {
             this.arbitro = arbitro;
         }
-=======
-	public Jogo(String data, Arena local, Time timeA, Time timeB, int pontosA, int pontosB, Arbitro arbitro){
-        this.ID_JOGO = (long) contadorJogo;
-        contadorJogo++;
-        this.data = data;
-        this.local = local;
-        this.timeA = timeA;
-        this.timeB = timeB;
-        this.pontosA = pontosA;
-        this.pontosB = pontosB;
-        this.arbitro = arbitro;
->>>>>>> origin/branch-joao
         // adicionar jogo ao time quando o jogo for criado
     }
     
@@ -136,33 +123,15 @@ public class Jogo {
         if(this.timeA.getNomeTime() == nomeTime) {
             this.pontosA++;
         }
-<<<<<<< HEAD
-        if(this.timeB.getNomeTime() == nomeTime) {
-            this.pontosB++;
-        }
-        else {
-            System.out.println("Nome de time invalido");
-=======
         else if(this.timeB.getNomeTime() == nomeTime) {
             this.pontosB++;
         }
         else {
             System.out.println("\nNome de time invalido");
->>>>>>> origin/branch-joao
         }
     }
 
     public void exibirInfoJogo() {
-<<<<<<< HEAD
-        System.out.printf("ID: 0x%016X", this.getIdJogo());
-        System.out.printf("Data: %s", this.getData());
-        System.out.printf("Local: %s", this.getLocal().getNomeArena());
-        System.out.printf("Arbitro: %s", this.getArbitro().getNomeArbitro());
-        System.out.printf("Time A: %s", this.getTimeA().getNomeTime());
-        System.out.printf("Pontos time A: %d", this.getPontosA());
-        System.out.printf("Time B: %s", this.getTimeB().getNomeTime());
-        System.out.printf("Pontos time B: %d", this.getPontosB());
-=======
         System.out.printf("\nID: 0x%016X\n", this.getIdJogo());
         System.out.printf("Data: %s\n", this.getData());
         System.out.printf("Local: %s\n", this.getLocal().getNomeArena());
@@ -171,7 +140,6 @@ public class Jogo {
         System.out.printf("Pontos time A: %d\n", this.getPontosA());
         System.out.printf("Time B: %s\n", this.getTimeB().getNomeTime());
         System.out.printf("Pontos time B: %d\n", this.getPontosB());
->>>>>>> origin/branch-joao
     }
 
     public int totalPontosJogo() {
