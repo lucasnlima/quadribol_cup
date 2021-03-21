@@ -80,7 +80,7 @@ public class Time {
 
     public int totalPontosJogos() {
         int total = 0;
-        for(Jogo temp : this.partidas) {
+        for(Jogo temp : this.getPartidas()) {
             if(temp.getTimeA() == this) {
                 total += temp.getPontosA();
             }

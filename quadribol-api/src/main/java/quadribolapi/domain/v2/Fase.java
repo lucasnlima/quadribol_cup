@@ -94,8 +94,8 @@ public class Fase {
     }
 
     public Time melhorTime() {
-        Time melhorTime = this.participantes.get(0);
-        for(Time temp : this.participantes) {
+        Time melhorTime = this.getParticipantes().get(0);
+        for(Time temp : this.getParticipantes()) {
             if(temp.totalPontosJogos() > melhorTime.totalPontosJogos()) {
                 melhorTime = temp;
             }
