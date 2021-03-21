@@ -118,7 +118,8 @@ public class Fase {
             } while (random1 === random2)
             Time timeA = temp.get(random1);
             Time timeB = temp.get(random2);
-            jogos.add(new Jogo(timeA, timeB));
+            Jogo jogo = new Jogo(timeA, timeB);
+            jogos.add(jogo);
             temp.remove(random1);
             temp.remove(random2);
     }
