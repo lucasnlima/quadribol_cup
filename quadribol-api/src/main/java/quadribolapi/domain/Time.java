@@ -30,8 +30,6 @@ public class Time {
         this.idTime = contadorTime;
         contadorTime++;
         this.nomeTime = nome;
-        this.elenco = elenco;
-        this.partidas = partidas;
     }
     
     public Long getIdTime() {
