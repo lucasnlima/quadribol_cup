@@ -1,5 +1,8 @@
 package quadribolapi.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +30,11 @@ public class Fase {
     private static int contadorFase = 0;
 
 	public Fase(String nome){
+<<<<<<< HEAD
         this.idFase = contadorFase;
+=======
+        this.ID_FASE = (long) contadorFase;
+>>>>>>> origin/branch-joao
         contadorFase++;
         this.nomeFase = nome;
     }
@@ -86,11 +93,19 @@ public class Fase {
     }
 
     public int numeroParticipantes() {
+<<<<<<< HEAD
         return this.participantes.length;
     }
 
     public int numeroJogos() {
         return this.jogos.length;
+=======
+        return this.participantes.size();
+    }
+
+    public int numeroJogos() {
+        return this.jogos.size();
+>>>>>>> origin/branch-joao
     }
 
     public Time melhorTime() {
@@ -103,6 +118,7 @@ public class Fase {
         return melhorTime;
     }
 
+<<<<<<< HEAD
     //Sorteia participantes e inicializa jogos
     public void sortear() {
     List<Jogo> jogos = new ArrayList<>();
@@ -118,14 +134,22 @@ public class Fase {
             jogos.add(new Jogo(timeA, timeB));
             temp.remove(random1);
             temp.remove(random2);
+=======
+    public void sortear() {
+        // usar a lista de participantes e sortear os confrontos, criando jogos e colocando na lista de jogos
+>>>>>>> origin/branch-joao
     }
     setJogos(jogos);
 }
 
     public void exibirFase() {
+<<<<<<< HEAD
         for(Jogo temp : this.jogos) {
             temp.exibirInfoJogo();
         }
+=======
+        // imprime todos os jogos da fase
+>>>>>>> origin/branch-joao
     }
 
 }

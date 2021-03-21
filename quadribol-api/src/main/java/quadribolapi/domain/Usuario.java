@@ -27,7 +27,11 @@ public class Usuario {
     protected static int contadorUsuario = 0;
 
 	public Usuario(String nome, String email, String senha){
+<<<<<<< HEAD
         this.idUsuario = contadorUsuario;
+=======
+        this.ID_USUARIO = (long) contadorUsuario;
+>>>>>>> origin/branch-joao
         contadorUsuario++;
         this.nomeUsuario = nome;
         this.email = email;

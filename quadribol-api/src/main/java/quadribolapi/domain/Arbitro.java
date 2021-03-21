@@ -22,7 +22,11 @@ public class Arbitro {
 	private static int contadorArbitro = 0;
 
 	public Arbitro(String nome, int idade){
+<<<<<<< HEAD
         this.idArbitro = contadorArbitro;
+=======
+        this.ID_ARBITRO = (long) contadorArbitro;
+>>>>>>> origin/branch-joao
 		contadorArbitro++;
         this.nomeArbitro = nome;
         this.idadeArbitro = idade;
@@ -43,9 +47,23 @@ public class Arbitro {
     public int getIdade() {
         return this.idadeArbitro;
     }
+<<<<<<< HEAD
 
     public void setIdade(int novaIdade) {
         this.idadeArbitro = novaIdade;
+=======
+
+    public void setIdade(int novaIdade) {
+        this.idadeArbitro = novaIdade;
+    }
+
+	public void exibirInfoArbitro() {
+        
+        System.out.printf("\nID: 0x%016X\n", this.getIdArbitro());
+        System.out.printf("Nome: %s\n", this.getNomeArbitro());
+        System.out.printf("Idade: %d\n", this.getIdade());
+        
+>>>>>>> origin/branch-joao
     }
 
 }

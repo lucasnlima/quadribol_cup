@@ -22,7 +22,7 @@ public class Transporte {
     private static int contadorTransporte = 0;
 
 	public Transporte(String tipo, String endereco){
-        this.ID_TRANSPORTE = contadorTransporte;
+        this.ID_TRANSPORTE = (long) contadorTransporte;
         contadorTransporte++;
         this.TIPO_TRANSPORTE = tipo;
         this.enderecoTransporte = endereco;

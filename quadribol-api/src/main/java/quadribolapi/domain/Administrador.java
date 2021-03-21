@@ -13,11 +13,11 @@ public class Administrador extends Usuario {
 	private int ranking;
 
 	public Administrador(String nome, String email, String senha, int ranking){
-        this(nome, email, senha);
+        super(nome, email, senha);
         this.ranking = ranking;
     }
 
-    public int getRanking(){
+	public int getRanking(){
         return this.ranking;
     }
 
