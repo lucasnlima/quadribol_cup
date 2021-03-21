@@ -109,7 +109,7 @@ public class Fase {
     //Sorteia participantes e inicializa jogos
     public void sortear() {
     List<Jogo> jogos = new ArrayList<>();
-    List<Time> temp = this.participantes;
+    List<Time> temp = this.getParticipantes();
     int aux = temp.size();
         for (int i = 0; i < aux; i = i+2) {
             do {
