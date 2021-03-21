@@ -107,7 +107,7 @@ public class Fase {
         // usar a lista de participantes e sortear os confrontos, criando jogos e colocando na lista de jogos
     }
 
-    public void exibirFase() {
+    public void exibirJogosFase() {
         // imprime todos os jogos da fase
     }
 

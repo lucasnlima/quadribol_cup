@@ -48,11 +48,11 @@ public class Jogador {
 		this.nomeJogador = novoNome;
 	}
 
-    public int getIdade() {
+    public int getIdadeJogador() {
         return this.idadeJogador;
     }
 
-    public void setIdade(int novaIdade) {
+    public void setIdadeJogador(int novaIdade) {
         this.idadeJogador = novaIdade;
     }
 
@@ -70,6 +70,14 @@ public class Jogador {
 
     public void setPontos(int novoPontos) {
         this.pontos = novoPontos;
+    }
+
+    public void exibirInfoJogador() {
+        System.out.printf("ID: 0x%016X", this.getIdJogador());
+        System.out.printf("Nome: %s", this.getNomeJogador());
+        System.out.printf("Idade: %d", this.getIdadeJogador());
+        System.out.printf("Posicao: %s", this.getPosicao());
+        System.out.printf("Pontos: %d", this.getPontos());
     }
 
 }

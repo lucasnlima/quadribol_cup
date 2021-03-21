@@ -25,4 +25,8 @@ public class Administrador extends Usuario {
         this.ranking = novoRanking;
     }
 
+    public void promover() {
+        this.ranking++;
+    }
+
 }

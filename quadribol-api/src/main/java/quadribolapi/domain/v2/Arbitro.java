@@ -40,12 +40,18 @@ public class Arbitro {
 		this.nomeArbitro = novoNome;
 	}
 
-    public int getIdade() {
+    public int getIdadeArbitro() {
         return this.idadeArbitro;
     }
 
-    public void setIdade(int novaIdade) {
+    public void setIdadeArbitro(int novaIdade) {
         this.idadeArbitro = novaIdade;
     }
+
+	public void exibirInfoArbitro() {
+		System.out.printf("ID: 0x%016X", this.getIdArbitro());
+        System.out.printf("Nome: %s", this.getNomeArbitro());
+        System.out.printf("Idade: %d", this.getIdadeArbitro());
+	}
 
 }
