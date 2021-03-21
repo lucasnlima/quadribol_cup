@@ -37,23 +37,23 @@ public class Jogo {
     private static int contadorJogo = 0;
 
 	public Jogo(Time timeA, Time timeB, Arena local, String data, int pontosA, int pontosB, Arbitro arbitro){
-        this.idJogo = contadorJogo;
+        this.ID_JOGO = (long) contadorJogo;
         contadorJogo++;
         this.timeA = timeA;
         this.timeB = timeB;
-        if(data) {
+        if(data != null) {
             this.data = data;
         }
-        if(local) {
+        if(local != null) {
             this.local = local;
         }
-        if(pontosA) {
+        if(pontosA >= 0) {
             this.pontosA = pontosA;
         }
-        if(pontosB) {
+        if(pontosB >= 0) {
             this.pontosB = pontosB;
         }
-        if(arbitro) {
+        if(arbitro != null) {
             this.arbitro = arbitro;
         }
         // adicionar jogo ao time quando o jogo for criado
