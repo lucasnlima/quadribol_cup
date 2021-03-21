@@ -1,52 +1,52 @@
-import static org.junit.Assert.assertEquals;
+package quadribolapi;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-class ArenaTest {
+import quadribolapi.domain.Acomodacao;
+import quadribolapi.domain.Arena;
+import quadribolapi.domain.Transporte;
 
-	@Test
-	void testArenaInitId() {
-		Arena pista = new Arena("Pista", 500, "Rua ABC");
-		
-		assertEquals("id incorreto", pista.getIdArena(), 0);
-	}
+class ArenaTest {
 	
 	@Test
 	void testArenaInitNome() {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
-		assertEquals("nome incorreto", pista.getNomeArena(), "Pista");
+		assertEquals(pista.getNomeArena(), "Pista");
 	}
 	
 	@Test
 	void testArenaInitCapacidade() {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
-		assertEquals("capacidade incorreta", pista.getCapacidade(), 500);
+		assertEquals(pista.getCapacidade(), 500);
 	}
 	
 	@Test
 	void testArenaInitEndereco() {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
-		assertEquals("endereco incorreto", pista.getEndereco(), "Rua ABC");
+		assertEquals(pista.getEndereco(), "Rua ABC");
 	}
 	
 	@Test
 	void testArenaInitAcomodacoes() {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
-		assertTrue("acomodacoes incorreto", pista.getAcomodacoes().isEmpty());
+		assertTrue(pista.getAcomodacoes().isEmpty());
 	}
 	
 	@Test
 	void testArenaInitTransportes() {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
-		assertTrue("transportes incorreto", pista.getTransportes().isEmpty());
+		assertTrue(pista.getTransportes().isEmpty());
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ class ArenaTest {
 		
 		pista.setNomeArena("Arena");
 		
-		assertEquals("novo nome incorreto", pista.getNomeArena(), "Arena");
+		assertEquals(pista.getNomeArena(), "Arena");
 	}
 	
 	@Test
@@ -64,7 +64,7 @@ class ArenaTest {
 		
 		pista.setCapacidade(300);
 		
-		assertEquals("capacidade incorreta", pista.getCapacidade(), 300);
+		assertEquals(pista.getCapacidade(), 300);
 	}
 	
 	@Test
@@ -78,7 +78,7 @@ class ArenaTest {
 		lista.add(pousada);
 		pista.setAcomodacoes(lista);
 		
-		assertEquals("novo acomodacoes incorreto", pista.getAcomodacoes().lenght, 2);
+		assertEquals(pista.getAcomodacoes().size(), 2);
 	}
 	
 	@Test
@@ -88,7 +88,7 @@ class ArenaTest {
 		Acomodacao hotel = new Acomodacao("Hotel", "Rua A");
 		pista.addAcomodacao(hotel);
 		
-		assertEquals("add acomodacao incorreto", pista.getAcomodacoes().lenght, 1);
+		assertEquals(pista.getAcomodacoes().size(), 1);
 	}
 	
 	@Test
@@ -99,7 +99,7 @@ class ArenaTest {
 		pista.addAcomodacao(hotel);
 		pista.removeAcomodacao(hotel);
 		
-		assertTrue("remove acomodacao incorreto", pista.getAcomodacoes().isEmpty());
+		assertTrue(pista.getAcomodacoes().isEmpty());
 	}
 	
 	@Test
@@ -111,7 +111,7 @@ class ArenaTest {
 		lista.add(onibus);
 		pista.setTransportes(lista);
 		
-		assertEquals("novo transportes incorreto", pista.getTransportes().lenght, 1);
+		assertEquals(pista.getTransportes().size(), 1);
 	}
 	
 	@Test
@@ -121,7 +121,7 @@ class ArenaTest {
 		Transporte onibus = new Transporte("Onibus", "Rua A");
 		pista.addTransporte(onibus);
 		
-		assertEquals("add transporte incorreto", pista.getTransportes().lenght, 1);
+		assertEquals(pista.getTransportes().size(), 1);
 	}
 	
 	@Test
@@ -132,7 +132,7 @@ class ArenaTest {
 		pista.addTransporte(onibus);
 		pista.removeTransporte(onibus);
 		
-		assertTrue("remove transporte incorreto", pista.getTransportes().isEmpty());
+		assertTrue(pista.getTransportes().isEmpty());
 	}
 
 }

@@ -1,9 +1,15 @@
-import static org.junit.Assert.assertEquals;
+package quadribolapi;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import quadribolapi.domain.GerenciadorUsuarios;
+import quadribolapi.domain.Usuario;
 
 class GerenciadorUsuariosTest {
 	
@@ -11,7 +17,7 @@ class GerenciadorUsuariosTest {
 	void testGerenciadorUsuariosInitUsuarios() {
 		GerenciadorUsuarios mestre = new GerenciadorUsuarios();
 		
-		assertTrue("usuarios incorreto", mestre.getUsuarios().isEmpty());
+		assertTrue(mestre.getUsuarios().isEmpty());
 	}
 	
 	@Test
@@ -23,7 +29,7 @@ class GerenciadorUsuariosTest {
 		lista.add(joao);
 		mestre.setUsuarios(lista);
 		
-		assertEquals("novo acomodacoes incorreto", mestre.getUsuarios().lenght, 1);
+		assertEquals(mestre.getUsuarios().size(), 1);
 	}
 	
 	@Test
@@ -33,7 +39,7 @@ class GerenciadorUsuariosTest {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		mestre.addUsuario(joao);
 		
-		assertEquals("add usuario incorreto", mestre.getUsuarios().lenght, 1);
+		assertEquals(mestre.getUsuarios().size(), 1);
 	}
 	
 	@Test
@@ -44,7 +50,7 @@ class GerenciadorUsuariosTest {
 		mestre.addUsuario(joao);
 		mestre.removeUsuario(joao);
 		
-		assertTrue("remove usuario incorreto", mestre.getUsuarios().isEmpty());
+		assertTrue(mestre.getUsuarios().isEmpty());
 	}
 	
 	@Test
@@ -54,17 +60,17 @@ class GerenciadorUsuariosTest {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		mestre.addUsuario(joao);
 		
-		r = mestre.login("Joao", "senha123");
-		assertEquals("sucesso no login nao atingido", r, 1);
+		int r = mestre.login("Joao", "senha123");
+		assertEquals(r, 1);
 		
 		r = mestre.login("Joao", "senha123");
-		assertEquals("usuario ja logado nao identificado", r, 0);
+		assertEquals(r, 0);
 		
 		r = mestre.login("Joao", "senha321");
-		assertEquals("senha incorreta nao identificada", r, 2);
+		assertEquals(r, 2);
 		
 		r = mestre.login("Lucas", "senha456");
-		assertEquals("usuario inexistente nao identificado", r, 3);
+		assertEquals(r, 3);
 	}
 
 }

@@ -1,7 +1,10 @@
-import static org.junit.Assert.assertEquals;
+package quadribolapi;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import quadribolapi.domain.Administrador;
 
 class AdministradorTest {
 
@@ -9,7 +12,7 @@ class AdministradorTest {
 	void testAdministradorInitRanking() {
 		Administrador joao = new Administrador("Joao", "joao@exemplo.com", "senha123", 1);
 		
-		assertEquals("ranking incorreto", joao.getRanking(), 1);
+		assertEquals(joao.getRanking(), 1);
 	}
 	
 	@Test
@@ -18,7 +21,7 @@ class AdministradorTest {
 		
 		joao.setRanking(2);
 		
-		assertEquals("novo ranking incorreto", joao.getRanking(), 2);
+		assertEquals(joao.getRanking(), 2);
 	}
 	
 	@Test
@@ -27,7 +30,7 @@ class AdministradorTest {
 		
 		joao.promover();
 		
-		assertEquals("novo ranking incorreto", joao.getRanking(), 2);
+		assertEquals(joao.getRanking(), 2);
 	}
 
 }

@@ -33,7 +33,7 @@ public class JogoController {
 	@PutMapping("/{jogo_id}/golA")
 	public Jogo maracarPontoA(@PathVariable long jogo_id) {
 		Jogo jogo = jogoRepository.getOne(jogo_id);
-		jogo.marcarPontoA();
+		jogo.marcarPonto(null);
 		jogoRepository.save(jogo);
 		return jogoRepository.save(jogo);
 	}
@@ -41,7 +41,7 @@ public class JogoController {
 	@PutMapping("/{jogo_id}/golB")
 	public Jogo maracarPontoB(@PathVariable long jogo_id) {
 		Jogo jogo = jogoRepository.getOne(jogo_id);
-		jogo.marcarPontoB();
+		jogo.marcarPonto(null);
 		jogoRepository.save(jogo);
 		return jogoRepository.save(jogo);
 	}

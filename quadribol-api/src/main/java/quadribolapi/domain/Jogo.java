@@ -33,6 +33,9 @@ public class Jogo {
 
     @Column(nullable = false)
 	private Arbitro arbitro;
+    
+    @Column(nullable = false)
+	private boolean finalizado;
 
     private static int contadorJogo = 0;
 

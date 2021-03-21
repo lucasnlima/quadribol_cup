@@ -1,44 +1,39 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+package quadribolapi;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class UsuarioTest {
+import quadribolapi.domain.Usuario;
 
-	@Test
-	void testUsuarioInitId() {
-		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
-		
-		assertEquals("id incorreto", joao.getIdUsuario(), 0);
-	}
+public class UsuarioTest {
 	
 	@Test
 	void testUsuarioInitNome() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		assertEquals("nome incorreto", joao.getNomeUsuario(), "Joao");
+		assertEquals(joao.getNomeUsuario(), "Joao");
 	}
 	
 	@Test
 	void testUsuarioInitEmail() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		assertEquals("email incorreto", joao.getEmail(), "joao@exemplo.com");
+		assertEquals(joao.getEmail(), "joao@exemplo.com");
 	}
 	
 	@Test
 	void testUsuarioInitSenha() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		assertEquals("senha incorreta", joao.getSenha(), "senha123");
+		assertEquals(joao.getSenha(), "senha123");
 	}
 	
 	@Test
 	void testUsuarioInitLogado() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		assertEquals("logado incorreto", joao.getLogado(), false);
+		assertEquals(joao.getLogado(), false);
 	}
 	
 	@Test
@@ -47,7 +42,7 @@ public class UsuarioTest {
 		
 		joao.setNomeUsuario("Jose");
 		
-		assertEquals("novo nome incorreto", joao.getNomeUsuario(), "Jose");
+		assertEquals(joao.getNomeUsuario(), "Jose");
 	}
 	
 	@Test
@@ -56,7 +51,7 @@ public class UsuarioTest {
 		
 		joao.setEmail("jose@exemplo.com");
 		
-		assertEquals("novo email incorreto", joao.getEmail(), "jose@exemplo.com");
+		assertEquals(joao.getEmail(), "jose@exemplo.com");
 	}
 	
 	@Test
@@ -65,7 +60,7 @@ public class UsuarioTest {
 		
 		joao.trocaLogado();
 		
-		assertTrue("nao trocou logado", joao.getLogado());
+		assertTrue(joao.getLogado());
 	}
 	
 	@Test
@@ -75,7 +70,7 @@ public class UsuarioTest {
 		joao.trocaLogado();
 		joao.trocaLogado();
 		
-		assertEquals("nao trocou logado", joao.getLogado(), false);
+		assertEquals(joao.getLogado(), false);
 	}
 	
 	@Test
@@ -85,7 +80,7 @@ public class UsuarioTest {
 		joao.trocaLogado();
 		joao.logout();
 		
-		assertEquals("nao trocou logado", joao.getLogado(), false);
+		assertEquals(joao.getLogado(), false);
 	}
 
 }
