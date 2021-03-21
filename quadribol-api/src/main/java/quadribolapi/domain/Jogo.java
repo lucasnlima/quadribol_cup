@@ -16,14 +16,14 @@ public class Jogo {
 	@Column(nullable = false)
 	private String data;
 
-	@ManyToOne
-    private Fase fase;
-	
-	@ManyToOne(optional = false)
-	private Time equipeA;
- 
-    @ManyToOne(optional = false)
-	private Time equipeB;
+    @Column(nullable = false)
+	private Arena local;
+
+    @Column(nullable = false)
+	private Time timeA;
+
+    @Column(nullable = false)
+	private Time timeB;
 
     @Column(nullable = false)
 	private int pontosA;
@@ -33,35 +33,43 @@ public class Jogo {
 
     @Column(nullable = false)
 	private Arbitro arbitro;
-
-    @Column (nullable = false)
-    private Boolean finalizado;
+    
+    @Column(nullable = false)
+	private boolean finalizado;
 
     private static int contadorJogo = 0;
 
 	public Jogo(Time timeA, Time timeB, Arena local, String data, int pontosA, int pontosB, Arbitro arbitro){
-        this.idJogo = contadorJogo;
+        this.ID_JOGO = (long) contadorJogo;
         contadorJogo++;
         this.timeA = timeA;
         this.timeB = timeB;
-        this.finalizado = false;
-        if(data) {
+        if(data != null) {
             this.data = data;
         }
-        if(local) {
+        if(local != null) {
             this.local = local;
         }
-        if(pontosA) {
+        if(pontosA >= 0) {
             this.pontosA = pontosA;
         }
-        if(pontosB) {
+        if(pontosB >= 0) {
             this.pontosB = pontosB;
         }
-        if(arbitro) {
+        if(arbitro != null) {
             this.arbitro = arbitro;
         }
+        this.finalizado = false;
         // adicionar jogo ao time quando o jogo for criado
     }
+
+    public boolean isFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(boolean finalizado) {
+		this.finalizado = finalizado;
+	}
     
     public Long getIdJogo() {
 		return this.ID_JOGO;
@@ -146,27 +154,10 @@ public class Jogo {
         System.out.printf("Pontos time B: %d\n", this.getPontosB());
     }
 
-	public void setPontosB(int pontosB) {
-		this.pontosB = pontosB;
-	}
-	
-	 public void exibirInfoJogo() {
-	        
-	        System.out.printf("ID: 0x%016X", this.getId());
-	        System.out.printf("Participantes: %s x %s", this.getEquipeA(), this.getEquipeB()); // colocar nome da equipe
-	        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
-	        System.out.printf("Local: %s", this.getPracaEsportiva().getNome());
-	        System.out.printf("Placar:%s x %s", this.getPontosA(), this.getPontosB());
-
-	    }
-
-	 public void marcarPontoA() {
-	      this.pontosA++;  
-	  }
-	 
-	 public void marcarPontoB() {
-		 this.pontosB++;
-	 }
-	       
+    public int totalPontosJogo() {
+        int total = this.getPontosA()+this.getPontosB();
+        System.out.printf("Total de pontos no jogo: %d", total);
+        return total;
+    }
 
 }

@@ -1,29 +1,25 @@
-import static org.junit.Assert.assertEquals;
+package quadribolapi;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TransporteTest {
+import quadribolapi.domain.Transporte;
 
-	@Test
-	void testTransporteInitId() {
-		Transporte onibus = new Transporte("Onibus", "Rua A");
-		
-		assertEquals("id incorreto", onibus.getIdTransporte(), 0);
-	}
+class TransporteTest {
 	
 	@Test
 	void testTransporteInitTipo() {
 		Transporte onibus = new Transporte("Onibus", "Rua A");
 		
-		assertEquals("tipo incorreto", onibus.getTipoTransporte(), "Onibus");
+		assertEquals(onibus.getTipoTransporte(), "Onibus");
 	}
 	
 	@Test
 	void testTransporteInitEndereco() {
 		Transporte onibus = new Transporte("Onibus", "Rua A");
 		
-		assertEquals("endereco incorreto", onibus.getEnderecoTransporte(), "Rua A");
+		assertEquals(onibus.getEnderecoTransporte(), "Rua A");
 	}
 	
 	@Test
@@ -32,7 +28,7 @@ class TransporteTest {
 		
 		onibus.setEnderecoTransporte("Rua B");
 		
-		assertEquals("novo endereco incorreto", onibus.getEnderecoTransporte(), "Rua B");
+		assertEquals(onibus.getEnderecoTransporte(), "Rua B");
 	}
 
 }

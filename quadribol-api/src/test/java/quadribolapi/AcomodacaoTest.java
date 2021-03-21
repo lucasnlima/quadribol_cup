@@ -1,29 +1,25 @@
-import static org.junit.Assert.assertEquals;
+package quadribolapi;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class AcomodacaoTest {
+import quadribolapi.domain.Acomodacao;
 
-	@Test
-	void testAcomodacaoInitId() {
-		Acomodacao hotel = new Acomodacao("Hotel", "Rua A");
-		
-		assertEquals("id incorreto", hotel.getIdAcomodacao(), 0);
-	}
+class AcomodacaoTest {
 	
 	@Test
 	void testAcomodacaoInitNome() {
 		Acomodacao hotel = new Acomodacao("Hotel", "Rua A");
 		
-		assertEquals("nome incorreto", hotel.getNomeAcomodacao(), "Hotel");
+		assertEquals(hotel.getNomeAcomodacao(), "Hotel");
 	}
 	
 	@Test
 	void testAcomodacaoInitEndereco() {
 		Acomodacao hotel = new Acomodacao("Hotel", "Rua A");
 		
-		assertEquals("endereco incorreto", hotel.getEndereco(), "Rua A");
+		assertEquals(hotel.getEndereco(), "Rua A");
 	}
 	
 	@Test
@@ -32,7 +28,7 @@ class AcomodacaoTest {
 		
 		hotel.setNomeAcomodacao("Pousada");
 		
-		assertEquals("novo nome incorreto", hotel.getNomeAcomodacao(), "Pousada");
+		assertEquals(hotel.getNomeAcomodacao(), "Pousada");
 	}
 
 }

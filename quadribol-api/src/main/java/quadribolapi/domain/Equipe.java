@@ -14,20 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Equipe {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	private String nome;
-	
-	@OneToMany
-	private List<Jogador> elenco;
-	
-	@ManyToMany
-	@JoinTable(name="historico_partidas", joinColumns =
-	{@JoinColumn(name="equipe_id")},inverseJoinColumns =
-	{@JoinColumn(name="jogo_id")})
+
 	private List<Jogo> historicoPartidas;
 	
 	public Equipe() {

@@ -40,7 +40,7 @@ class JogoUnitTest {
 		Arena hogwarts = new Arena("Hogwarts", 150000, "Rua dos Alfeneiros, 4");
 		hogwarts.setAcomodacoes(acomodacoes);
 		
-		Jogo grifinoriaVsCorvinal = new Jogo("25/08/1993", hogwarts, grifinoria, corvinal, 0, 0, arb);
+		Jogo grifinoriaVsCorvinal = new Jogo(grifinoria, corvinal, hogwarts, "25/08/1993", 0, 0, arb);
 		System.out.printf("\nTeste Unitário Jogo - Antes das Modificações:");
 		grifinoriaVsCorvinal.exibirInfoJogo();
 		
@@ -110,7 +110,7 @@ class JogoUnitTest {
 		Arena hogwarts = new Arena("Hogwarts", 150000, "Rua dos Alfeneiros, 4");
 		hogwarts.setAcomodacoes(acomodacoes);
 		
-		Jogo grifinoriaVsCorvinal = new Jogo("25/08/1993", hogwarts, grifinoria, corvinal, 0, 0, arb);
+		Jogo grifinoriaVsCorvinal = new Jogo(grifinoria, corvinal, hogwarts, "25/08/1993", 0, 0, arb);
 		System.out.printf("\nTeste Unitário Jogo - Antes das Modificações:");
 		grifinoriaVsCorvinal.exibirInfoJogo();
 		

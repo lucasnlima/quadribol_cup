@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import quadribolapi.domain.Arena;
 
 @Repository
-public interface EquipeRepository extends JpaRepository<Equipe, Long> {
-	
-	public Equipe getEquipeByNome(String nome);	
-	
+public interface ArenaRepossitory extends JpaRepository<Arena, Long> {
+
 }
