@@ -78,7 +78,7 @@ public class Fase {
 
     public int totalPontosFase() {
         int totalPontos = 0;
-        for(Jogo temp : this.jogos) {
+        for(Jogo temp : this.getJogos()) {
             totalPontos += temp.totalPontosJogo();
         }
         System.out.printf("Total de pontos da fase: %d", totalPontos);
