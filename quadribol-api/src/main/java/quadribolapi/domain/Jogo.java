@@ -15,12 +15,18 @@ public class Jogo {
 	
 	@Column(nullable = false)
 	private String data;
-
-    @Column(nullable = false)
+	
+    @ManyToOne
 	private Arena local;
 
-    @Column(nullable = false)
+	@ManyToOne
+    private Fase fase;
+	
+	@ManyToOne(optional = false)
 	private Time timeA;
+ 
+    @ManyToOne(optional = false)
+	private Time timeB;
 
     @Column(nullable = false)
 	private Time timeB;
@@ -34,31 +40,23 @@ public class Jogo {
     @Column(nullable = false)
 	private Arbitro arbitro;
     
-    @Column(nullable = false)
-	private boolean finalizado;
+    private boolean finalizado;
+    
+    public Jogo() {
+		super();
+	}
 
-    private static int contadorJogo = 0;
 
-	public Jogo(Time timeA, Time timeB, Arena local, String data, int pontosA, int pontosB, Arbitro arbitro){
-        this.ID_JOGO = (long) contadorJogo;
-        contadorJogo++;
-        this.timeA = timeA;
-        this.timeB = timeB;
-        if(data != null) {
-            this.data = data;
-        }
-        if(local != null) {
-            this.local = local;
-        }
-        if(pontosA >= 0) {
-            this.pontosA = pontosA;
-        }
-        if(pontosB >= 0) {
-            this.pontosB = pontosB;
-        }
-        if(arbitro != null) {
-            this.arbitro = arbitro;
-        }
+	public Jogo(Long ide, String dat,Arena loc, Fase fase, Time partA, Time partB, Arbitro arb) {
+        this.id = ide;
+        this.data = dat;
+        this.local = loc;
+        this.fase = fase;
+        this.pontosA = 0;
+        this.pontosB = 0;
+        this.timeA = partA;
+        this.timeB = partB;
+        this.arbitro = arb;
         this.finalizado = false;
         // adicionar jogo ao time quando o jogo for criado
     }
@@ -87,21 +85,21 @@ public class Jogo {
         return this.local;
     }
 
-    public void setLocal(Arena novoLocal) {
-        this.local = novoLocal;
-    }
+    public Arena getArena() {
+		return this.local;
+	}
 
-    public Time getTimeA(){
-        return this.timeA;
-    }
+	public void setArena(Arena novol) {
+		this.local = novol;
+	}
 
-    public void setTimeA(Time novoTimeA) {
-        this.timeA = novoTimeA;
-    }
+    public Arena getLocal() {
+		return local;
+	}
 
-    public Time getTimeB(){
-        return this.timeB;
-    }
+	public void setLocal(Arena local) {
+		this.local = local;
+	}
 
     public void setTimeB(Time novoTimeB) {
         this.timeB = novoTimeB;
@@ -111,21 +109,21 @@ public class Jogo {
         return this.pontosA;
     }
 
-    public void setPontosA(int novoPontosA) {
-        this.pontosA = novoPontosA;
-    }
+	public Time getTimeA() {
+		return timeA;
+	}
 
-    public int getPontosB(){
-        return this.pontosB;
-    }
+	public void setTimeA(Time timeA) {
+		this.timeA = timeA;
+	}
 
-    public void setPontosB(int novoPontosB) {
-        this.pontosB = novoPontosB;
-    }
+	public Time getTimeB() {
+		return timeB;
+	}
 
-    public Arbitro getArbitro(){
-        return this.arbitro;
-    }
+	public void setTimeB(Time timeB) {
+		this.timeB = timeB;
+	}
 
     public void setArbitro(Arbitro novoArbitro) {
         this.arbitro = novoArbitro;
@@ -154,10 +152,27 @@ public class Jogo {
         System.out.printf("Pontos time B: %d\n", this.getPontosB());
     }
 
-    public int totalPontosJogo() {
-        int total = this.getPontosA()+this.getPontosB();
-        System.out.printf("Total de pontos no jogo: %d", total);
-        return total;
-    }
+	public void setPontosB(int pontosB) {
+		this.pontosB = pontosB;
+	}
+	
+	 public void exibirInfoJogo() {
+	        
+	        System.out.printf("ID: 0x%016X", this.getId());
+	        System.out.printf("Participantes: %s x %s", this.getTimeA(), this.getTimeB()); // colocar nome da Time
+	        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
+	        System.out.printf("Local: %s", this.getArena().getNome());
+	        System.out.printf("Placar:%s x %s", this.getPontosA(), this.getPontosB());
+
+	    }
+
+	 public void marcarPontoA() {
+	      this.pontosA++;  
+	  }
+	 
+	 public void marcarPontoB() {
+		 this.pontosB++;
+	 }
+	       
 
 }

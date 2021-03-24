@@ -1,104 +1,91 @@
 package quadribolapi.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Arena {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long ID_ARENA;
+	private long id;
 	
 	@Column(nullable = false)
-	private String nomeArena;
+	private String nome;
 
     @Column(nullable = false)
 	private int capacidade;
 
     @Column(nullable = false)
-	private final String ENDERECO_ARENA;
+	private String endereco;
 
-    @Column(nullable = false)
-    private List<Acomodacao> acomodacoes = new ArrayList<Acomodacao>();
+    @OneToMany
+    private List<Acomodacao> acomodacoes;
 
-    @Column(nullable = false)
-    private List<Transporte> transportes = new ArrayList<Transporte>();
-
-    private static int contadorArena = 0;
-
-	public Arena(String nome, int capacidade, String endereco){
-        this.ID_ARENA = (long) contadorArena;
-        contadorArena++;
-        this.nomeArena = nome;
-        this.capacidade = capacidade;
-        this.ENDERECO_ARENA = endereco;
+    public Arena() {
+        super();
     }
     
-    public Long getIdArena() {
-		return this.ID_ARENA;
+    public Arena(Long ide, String nom, int cap, String end, List<Acomodacao> acomodacoes) {
+        this.id = ide;
+        this.nome = nom;
+        this.capacidade = cap;
+        this.endereco = end;
+        this.acomodacoes = acomodacoes;
+    }
+    
+    public float getId() {
+		return this.id;
 	}
 
-	public String getNomeArena() {
-		return this.nomeArena;
+	public String getNome() {
+		return this.nome;
 	}
 
-	public void setNomeArena(String novoNome) {
-		this.nomeArena = novoNome;
+	public void setNome(String novon) {
+		this.nome = novon;
 	}
 
     public int getCapacidade() {
 		return this.capacidade;
 	}
 
-	public void setCapacidade(int novaCapacidade) {
-		this.capacidade = novaCapacidade;
+	public void setCapacidade(int novac) {
+		this.capacidade = novac;
 	}
 
     public String getEndereco() {
-		return this.ENDERECO_ARENA;
+		return this.endereco;
 	}
 
-    public List<Acomodacao> getAcomodacoes() {
+	public List<Acomodacao> getAcomodacoes() {
         return this.acomodacoes;
     }
-
-    public void setAcomodacoes(List<Acomodacao> novoAcomodacoes) {
-        this.acomodacoes = novoAcomodacoes;
+    
+    public void addAcomodacao(Acomodacao aco) {
+        this.acomodacoes.add(aco);
     }
 
-    public void addAcomodacao(Acomodacao acomodacao) {
-        this.acomodacoes.add(acomodacao);
+    public void removeAcomodacao(Acomodacao aco) {
+        this.acomodacoes.remove(aco);
     }
 
-    public void removeAcomodacao(Acomodacao acomodacao) {
-        this.acomodacoes.remove(acomodacao);
-    }
-
-    public List<Transporte> getTransportes() {
-        return this.transportes;
-    }
-
-    public void setTransportes(List<Transporte> novoTransporte) {
-        this.transportes = novoTransporte;
-    }
-
-    public void addTransporte(Transporte transporte) {
-        this.transportes.add(transporte);
-    }
-
-    public void removeTransporte(Transporte transporte) {
-        this.transportes.remove(transporte);
-    }
-
-    public void exibirInfoArena() {
-        // imprime todas as informacoes da arena
+    public void exibirInfo() {
+        
+        System.out.printf("ID: 0x%016X", this.getId());
+        System.out.printf("Nome: %s", this.getNome());
+        System.out.printf("Capacidade: %d", this.getCapacidade());
+        System.out.printf("Endereco: %s", this.getEndereco());
+        System.out.println("Acomodacoes: ");
+        for(int i = 0; i < this.acomodacoes.size(); i++) {
+            System.out.println(this.acomodacoes.get(i));
+        }
     }
 
 }

@@ -28,11 +28,7 @@ public class Jogador {
     private static int contadorJogador = 0;
 
 	public Jogador(String nome, int idade, String posicao, int pontos){
-<<<<<<< HEAD
         this.ID_JOGADOR = (long) contadorJogador;
-=======
-        this.idJogador = contadorJogador;
->>>>>>> origin/helena-branch
         contadorJogador++;
         this.nomeJogador = nome;
         this.idadeJogador = idade;
@@ -76,8 +72,6 @@ public class Jogador {
         this.pontos = novoPontos;
     }
 
-<<<<<<< HEAD
-=======
     public void exibirInfoJogador() {
         System.out.printf("ID: 0x%016X", this.getIdJogador());
         System.out.printf("Nome: %s", this.getNomeJogador());
@@ -86,5 +80,4 @@ public class Jogador {
         System.out.printf("Pontos: %d", this.getPontos());
     }
 
->>>>>>> origin/helena-branch
 }

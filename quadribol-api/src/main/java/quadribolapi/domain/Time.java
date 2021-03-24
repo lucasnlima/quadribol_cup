@@ -1,98 +1,64 @@
 package quadribolapi.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import quadribolapi.domain.Jogo;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Time {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long ID_TIME;
+	private long id;
 	
-	@Column(nullable = false)
-	private String nomeTime;
-
-    @Column(nullable = false)
-	private List<Jogador> elenco = new ArrayList<Jogador>();
-
-    @Column(nullable = false)
-	private List<Jogo> partidas = new ArrayList<Jogo>();
-
-    private static int contadorTime = 0;
-
-	public Time(String nome){
-        this.ID_TIME = (long) contadorTime;
-        contadorTime++;
-        this.nomeTime = nome;
-    }
-    
-    public Long getIdTime() {
-		return this.ID_TIME;
+	private String nome;
+	
+	@OneToMany
+	private List<Jogador> elenco;
+	
+	@ManyToMany
+	@JoinTable(name="historico_partidas", joinColumns =
+	{@JoinColumn(name="Time_id")},inverseJoinColumns =
+	{@JoinColumn(name="jogo_id")})
+	private List<Jogo> historicoPartidas;
+	
+	public Time() {
+		super();
+	}
+	
+	public Time(int id, String nome, List<Jogador> elenco) {
+		this.id = id;
+		this.nome = nome;
+		this.elenco = elenco;
+	}
+	
+	public long getId() {
+		return id;
 	}
 
-	public String getNomeTime() {
-		return this.nomeTime;
+	public String getNome() {
+		return nome;
 	}
-
-	public void setNomeTime(String novoNome) {
-		this.nomeTime = novoNome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-
-    public List<Jogador> getElenco() {
-        return this.elenco;
-    }
-
-    public void setElenco(List<Jogador> novoElenco) {
-        this.elenco = novoElenco;
-    }
-
-    public void addJogador(Jogador jogador) {
-        this.elenco.add(jogador);
-    }
-
-    public void removeJogador(Jogador jogador) {
-        this.elenco.remove(jogador);
-    }
-
-    public List<Jogo> getPartidas() {
-        return this.partidas;
-    }
-
-    public void setPartidas(List<Jogo> novoPartidas) {
-        this.partidas = novoPartidas;
-    }
-
-    public void addPartida(Jogo partida) {
-        this.partidas.add(partida);
-    }
-
-    public void removePartida(Jogo partida) {
-        this.partidas.remove(partida);
-    }
-
-    public int totalPontosJogos() {
-        int total = 0;
-        for(Jogo temp : this.getPartidas()) {
-            if(temp.getTimeA() == this) {
-                total += temp.getPontosA();
-            }
-            else {
-                total += temp.getPontosB();
-            }
-        }
-        return total;
-    }
-
-    public void exibirInfoTime() {
-        // imprime info time
-    }
+	public Object[] getElenco() {
+		return this.elenco.toArray();
+	}
+	public void setElenco(Jogador[] elenco) {
+		this.elenco = Arrays.asList(elenco);
+	}
+	
+	public void addJogador(Jogador jogador) {
+		this.elenco.add(jogador);
+	}
+	
 }
