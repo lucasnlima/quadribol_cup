@@ -30,7 +30,11 @@ public class Fase {
     private static int contadorFase = 0;
 
 	public Fase(String nome){
+<<<<<<< HEAD
         this.ID_FASE = (long) contadorFase;
+=======
+        this.idFase = contadorFase;
+>>>>>>> origin/helena-branch
         contadorFase++;
         this.nomeFase = nome;
     }
@@ -81,7 +85,7 @@ public class Fase {
 
     public int totalPontosFase() {
         int totalPontos = 0;
-        for(Jogo temp : this.jogos) {
+        for(Jogo temp : this.getJogos()) {
             totalPontos += temp.totalPontosJogo();
         }
         System.out.printf("Total de pontos da fase: %d", totalPontos);
@@ -89,16 +93,16 @@ public class Fase {
     }
 
     public int numeroParticipantes() {
-        return this.participantes.size();
+        return this.participantes.lenght;
     }
 
     public int numeroJogos() {
-        return this.jogos.size();
+        return this.jogos.lenght;
     }
 
     public Time melhorTime() {
-        Time melhorTime = this.participantes.get(0);
-        for(Time temp : this.participantes) {
+        Time melhorTime = this.getParticipantes().get(0);
+        for(Time temp : this.getParticipantes()) {
             if(temp.totalPontosJogos() > melhorTime.totalPontosJogos()) {
                 melhorTime = temp;
             }
