@@ -1,22 +1,20 @@
 package quadribolapi.domain;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import java.security.Key;
 import java.util.List;
-import java.util.Map;
 
 @Entity
-public class PracaEsportiva {
+public class Arena {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private long id;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -25,21 +23,25 @@ public class PracaEsportiva {
 	private int capacidade;
 
     @Column(nullable = false)
-	private final String endereco;
+	private String endereco;
 
-    @ElementCollection
-    Map<Key,String> acomodacoes;
+    @OneToMany
+    private List<Acomodacao> acomodacoes;
 
-	public PracaEsportiva(Long ide, String nom, int cap, String end, List<String> aco) {
+    public Arena() {
+        super();
+    }
+    
+    public Arena(Long ide, String nom, int cap, String end, List<Acomodacao> acomodacoes) {
         this.id = ide;
         this.nome = nom;
         this.capacidade = cap;
         this.endereco = end;
-        this.acomodacoes = (Map<Key, String>) aco;
+        this.acomodacoes = acomodacoes;
     }
     
-    public Long getId() {
-		return id;
+    public float getId() {
+		return this.id;
 	}
 
 	public String getNome() {
@@ -62,15 +64,15 @@ public class PracaEsportiva {
 		return this.endereco;
 	}
 
-	public Map<Key, String> getAcomodacoes() {
+	public List<Acomodacao> getAcomodacoes() {
         return this.acomodacoes;
     }
     
-    public void addAcomodacao(String aco) {
-        ((List<String>) this.acomodacoes).add(aco);
+    public void addAcomodacao(Acomodacao aco) {
+        this.acomodacoes.add(aco);
     }
 
-    public void removeAcomodacao(String aco) {
+    public void removeAcomodacao(Acomodacao aco) {
         this.acomodacoes.remove(aco);
     }
 

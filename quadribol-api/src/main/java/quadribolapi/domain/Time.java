@@ -7,19 +7,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Equipe {
+public class Time {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String nome;
-	private List<Jogador> elenco;
-	private Jogo[] historicoPartidas;
 	
-	public Equipe(int id, String nome, List<Jogador> elenco) {
+	private String nome;
+	
+	@OneToMany
+	private List<Jogador> elenco;
+	
+	@ManyToMany
+	@JoinTable(name="historico_partidas", joinColumns =
+	{@JoinColumn(name="Time_id")},inverseJoinColumns =
+	{@JoinColumn(name="jogo_id")})
+	private List<Jogo> historicoPartidas;
+	
+	public Time() {
 		super();
+	}
+	
+	public Time(int id, String nome, List<Jogador> elenco) {
 		this.id = id;
 		this.nome = nome;
 		this.elenco = elenco;
@@ -35,8 +50,8 @@ public class Equipe {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Jogador[] getElenco() {
-		return elenco.toArray(new Jogador[23]);
+	public Object[] getElenco() {
+		return this.elenco.toArray();
 	}
 	public void setElenco(Jogador[] elenco) {
 		this.elenco = Arrays.asList(elenco);
@@ -46,8 +61,4 @@ public class Equipe {
 		this.elenco.add(jogador);
 	}
 	
-	// remover jogadores individualmente
-	
-	
-
 }

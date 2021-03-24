@@ -11,10 +11,10 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private final Long ID_USUARIO;
 	
 	@Column(nullable = false)
-	private String nome;
+	private String nomeUsuario;
 
     @Column(nullable = false)
 	private String email;
@@ -22,39 +22,67 @@ public class Usuario {
     @Column(nullable = false)
 	private String senha;
 
-	public Usuario(Long ide, String nom, String em, String sen){
-        this.id = ide;
-        this.nome = nom;
-        this.email = em;
-        this.senha = sen;
+    private Boolean logado;
+
+    protected static int contadorUsuario = 0;
+
+	public Usuario(String nome, String email, String senha){
+        this.ID_USUARIO = (long) contadorUsuario;
+        contadorUsuario++;
+        this.nomeUsuario = nome;
+        this.email = email;
+        this.senha = senha;
+        this.logado = false;
     }
     
-    public Long getId() {
-		return this.id;
+    public Long getIdUsuario() {
+		return this.ID_USUARIO;
 	}
 
-	public String getNome() {
-		return this.nome;
+	public String getNomeUsuario() {
+		return this.nomeUsuario;
 	}
 
-	public void setNome(String novon) {
-		this.nome = novon;
+	public void setNomeUsuario(String novoNome) {
+		this.nomeUsuario = novoNome;
 	}
 
     public String getEmail() {
         return this.email;
     }
 
-    public void setEmail(String novoe) {
-        this.email = novoe;
+    public void setEmail(String novoEmail) {
+        this.email = novoEmail;
     }
 
     public String getSenha(){
         return this.senha;
     }
 
-    public void setSenha(String novas) {
-        this.senha = novas;
+    public void setSenha(String novaSenha) {
+        this.senha = novaSenha;
+    }
+
+    public Boolean getLogado() {
+        return this.logado;
+    }
+
+    public void trocaLogado() {
+        if(this.logado == true) {
+            this.logado = false;
+        }
+        else {
+            this.logado = true;
+        }
+    }
+
+    public void logout() {
+        if(this.logado == true) {
+            this.trocaLogado();
+        }
+        else {
+            System.out.println("Usuario nao logado");
+        }
     }
 
 }

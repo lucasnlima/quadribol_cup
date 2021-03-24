@@ -11,103 +11,168 @@ public class Jogo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private final Long ID_JOGO;
 	
 	@Column(nullable = false)
 	private String data;
+	
+    @ManyToOne
+	private Arena local;
+
+	@ManyToOne
+    private Fase fase;
+	
+	@ManyToOne(optional = false)
+	private Time timeA;
+ 
+    @ManyToOne(optional = false)
+	private Time timeB;
 
     @Column(nullable = false)
-	private Placar placar;
+	private Time timeB;
 
     @Column(nullable = false)
-	private Equipe participanteA;
+	private int pontosA;
 
     @Column(nullable = false)
-	private Equipe participanteB;
+	private int pontosB;
 
     @Column(nullable = false)
 	private Arbitro arbitro;
+    
+    private boolean finalizado;
+    
+    public Jogo() {
+		super();
+	}
 
-    @Column(nullable = false)
-	private PracaEsportiva local;
 
-
-	public Jogo(Long ide, String dat, Placar plac, Equipe partA, Equipe partB, Arbitro arb, PracaEsportiva loc) {
+	public Jogo(Long ide, String dat,Arena loc, Fase fase, Time partA, Time partB, Arbitro arb) {
         this.id = ide;
         this.data = dat;
-        this.placar = plac;
-        this.participanteA = partA;
-        this.participanteB = partB;
-        this.arbitro = arb;
         this.local = loc;
+        this.fase = fase;
+        this.pontosA = 0;
+        this.pontosB = 0;
+        this.timeA = partA;
+        this.timeB = partB;
+        this.arbitro = arb;
+        this.finalizado = false;
+        // adicionar jogo ao time quando o jogo for criado
     }
+
+    public boolean isFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(boolean finalizado) {
+		this.finalizado = finalizado;
+	}
     
-    public Long getId() {
-		return id;
+    public Long getIdJogo() {
+		return this.ID_JOGO;
 	}
 
 	public String getData() {
 		return this.data;
 	}
 
-	public void setData(String novad) {
-		this.data = novad;
+	public void setData(String novaData) {
+		this.data = novaData;
 	}
 
-    public Placar getPlacar() {
-		return this.placar;
-	}
+    public Arena getLocal() {
+        return this.local;
+    }
 
-	public void setPlacar(Placar novap) {
-		this.placar = novap;
-	}
-
-    public Equipe getParticipanteA() {
-		return this.participanteA;
-	}
-
-    public void setParticipanteA(Equipe novaeqa) {
-		this.participanteA = novaeqa;
-	}
-
-    public Equipe getParticipanteB() {
-		return this.participanteB;
-	}
-
-    public void setParticipanteB(Equipe novaeqb) {
-		this.participanteB = novaeqb;
-	}
-
-    public Arbitro getArbitro() {
-		return this.arbitro;
-	}
-
-	public void setArbitro(Arbitro novoa) {
-		this.arbitro = novoa;
-	}
-
-    public PracaEsportiva getPracaEsportiva() {
+    public Arena getArena() {
 		return this.local;
 	}
 
-	public void setPracaEsportiva(PracaEsportiva novol) {
+	public void setArena(Arena novol) {
 		this.local = novol;
 	}
 
+    public Arena getLocal() {
+		return local;
+	}
+
+	public void setLocal(Arena local) {
+		this.local = local;
+	}
+
+    public void setTimeB(Time novoTimeB) {
+        this.timeB = novoTimeB;
+    }
+
+    public int getPontosA(){
+        return this.pontosA;
+    }
+
+	public Time getTimeA() {
+		return timeA;
+	}
+
+	public void setTimeA(Time timeA) {
+		this.timeA = timeA;
+	}
+
+	public Time getTimeB() {
+		return timeB;
+	}
+
+	public void setTimeB(Time timeB) {
+		this.timeB = timeB;
+	}
+
+    public void setArbitro(Arbitro novoArbitro) {
+        this.arbitro = novoArbitro;
+    }
+
+    public void marcarPonto(String nomeTime) {
+        if(this.timeA.getNomeTime() == nomeTime) {
+            this.pontosA++;
+        }
+        else if(this.timeB.getNomeTime() == nomeTime) {
+            this.pontosB++;
+        }
+        else {
+            System.out.println("\nNome de time invalido");
+        }
+    }
+
     public void exibirInfoJogo() {
-        
-        System.out.printf("ID: 0x%016X", this.getId());
-        System.out.printf("Participantes: %s x %s", this.getParticipanteA(), this.getParticipanteB()); // colocar nome da equipe
-        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
-        System.out.printf("Local: %s", this.getPracaEsportiva().getNome());
-        System.out.printf("Placar: %s", this.getPlacar().getEstatisticas());
-
+        System.out.printf("\nID: 0x%016X\n", this.getIdJogo());
+        System.out.printf("Data: %s\n", this.getData());
+        System.out.printf("Local: %s\n", this.getLocal().getNomeArena());
+        System.out.printf("Arbitro: %s\n", this.getArbitro().getNomeArbitro());
+        System.out.printf("Time A: %s\n", this.getTimeA().getNomeTime());
+        System.out.printf("Pontos time A: %d\n", this.getPontosA());
+        System.out.printf("Time B: %s\n", this.getTimeB().getNomeTime());
+        System.out.printf("Pontos time B: %d\n", this.getPontosB());
     }
 
-    public void alterarJogo() {
-        
-        // FAZER
-        
-    }
+	public void setPontosB(int pontosB) {
+		this.pontosB = pontosB;
+	}
+	
+	 public void exibirInfoJogo() {
+	        
+	        System.out.printf("ID: 0x%016X", this.getId());
+	        System.out.printf("Participantes: %s x %s", this.getTimeA(), this.getTimeB()); // colocar nome da Time
+	        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
+	        System.out.printf("Local: %s", this.getArena().getNome());
+	        System.out.printf("Placar:%s x %s", this.getPontosA(), this.getPontosB());
+
+	    }
+
+	 public void marcarPontoA() {
+	      this.pontosA++;  
+	  }
+	 
+	 public void marcarPontoB() {
+		 this.pontosB++;
+	 }
+	       
 
 }
