@@ -13,23 +13,21 @@ public class Acomodacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private final Long ID_ACOMODACAO;
 	
-	@Column(nullable = false)
-	private String nomeAcomodacao;
+	private String nome;
+	
+	private String endereco;
 
-    @Column(nullable = false)
-	private final String ENDERECO_ACOMODACAO;
-
-    private static int contadorAcomodacao = 0;
-
+	public Acomodacao() {
+		super();
+	}
+	
 	public Acomodacao(String nome, String endereco){
-        this.ID_ACOMODACAO = (long) contadorAcomodacao;
-        contadorAcomodacao++;
-        this.nomeAcomodacao = nome;
-        this.ENDERECO_ACOMODACAO = endereco;
+        this.nome = nome;
+        this.endereco = endereco;
     }
-    
-    public Long getIdAcomodacao() {
-		return this.ID_ACOMODACAO;
+	
+	public float getId() {
+		return id;
 	}
 
 	public String getNomeAcomodacao() {
@@ -49,5 +47,16 @@ public class Acomodacao {
         System.out.printf("Nome: %s", this.getNomeAcomodacao());
         System.out.printf("Endereco: %s", this.getEndereco());
 	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	public void exibirInfoAcomodacao () {
+		System.out.printf("ID: 0x%016X", this.getId());
+        System.out.printf("Nome: %s", this.getNome());
+        System.out.printf("Endereco: %s", this.getEndereco());
+	}
+	
 
 }

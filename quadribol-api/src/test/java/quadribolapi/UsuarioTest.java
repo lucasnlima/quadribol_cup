@@ -12,7 +12,7 @@ public class UsuarioTest {
 	void testUsuarioInitNome() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		assertEquals(joao.getNomeUsuario(), "Joao");
+		assertEquals(joao.getNome(), "Joao");
 	}
 	
 	@Test
@@ -33,16 +33,16 @@ public class UsuarioTest {
 	void testUsuarioInitLogado() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		assertEquals(joao.getLogado(), false);
+		assertEquals(joao.auth(), false);
 	}
 	
 	@Test
 	void testUsuarioSetNome() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		joao.setNomeUsuario("Jose");
+		joao.setNome("Jose");
 		
-		assertEquals(joao.getNomeUsuario(), "Jose");
+		assertEquals(joao.getNome(), "Jose");
 	}
 	
 	@Test
@@ -55,32 +55,31 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	void testUsuarioTrocaLogado1() {
+	void testUsuarioLogin() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		joao.trocaLogado();
+		joao.login("senha123");
 		
-		assertTrue(joao.getLogado());
+		assertTrue(joao.auth());
 	}
 	
 	@Test
-	void testUsuarioTrocaLogado2() {
+	void testUsuarioSenhaErrada() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		joao.trocaLogado();
-		joao.trocaLogado();
+		joao.login("erreiAsenha");
 		
-		assertEquals(joao.getLogado(), false);
+		assertEquals(joao.auth(), false);
 	}
 	
 	@Test
 	void testUsuarioLogout() {
 		Usuario joao = new Usuario("Joao", "joao@exemplo.com", "senha123");
 		
-		joao.trocaLogado();
+		joao.login("senha123");
 		joao.logout();
 		
-		assertEquals(joao.getLogado(), false);
+		assertEquals(joao.auth(), false);
 	}
 
 }

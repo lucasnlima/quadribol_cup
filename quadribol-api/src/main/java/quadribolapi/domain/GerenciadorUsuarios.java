@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 public class GerenciadorUsuarios {
 	
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
@@ -32,14 +31,14 @@ public class GerenciadorUsuarios {
 
     public int login(String nomeUsuario, String senha) {
         for(Usuario temp : this.usuarios) {
-			if(temp.getNomeUsuario() == nomeUsuario) {
+			if(temp.getNome() == nomeUsuario) {
                 if(temp.getSenha() == senha) {
-                    if(temp.getLogado() == true) {
+                    if(temp.auth() == true) {
                         System.out.println("Usuario ja logado");
                         return 0;
                     }
                     else {
-                        temp.trocaLogado();
+                        temp.login(senha);
                         System.out.println("Login feito com sucesso");
                         return 1;
                     }

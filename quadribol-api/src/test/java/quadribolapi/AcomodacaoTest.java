@@ -12,7 +12,7 @@ class AcomodacaoTest {
 	void testAcomodacaoInitNome() {
 		Acomodacao hotel = new Acomodacao("Hotel", "Rua A");
 		
-		assertEquals(hotel.getNomeAcomodacao(), "Hotel");
+		assertEquals(hotel.getNome(), "Hotel");
 	}
 	
 	@Test
@@ -26,9 +26,9 @@ class AcomodacaoTest {
 	void testAcomodacaoSetNome() {
 		Acomodacao hotel = new Acomodacao("Hotel", "Rua A");
 		
-		hotel.setNomeAcomodacao("Pousada");
+		hotel.setNome("Pousada");
 		
-		assertEquals(hotel.getNomeAcomodacao(), "Pousada");
+		assertEquals(hotel.getNome(), "Pousada");
 	}
 
 }

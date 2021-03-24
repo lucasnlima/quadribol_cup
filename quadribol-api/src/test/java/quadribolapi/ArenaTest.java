@@ -3,7 +3,6 @@ package quadribolapi;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ class ArenaTest {
 	void testArenaInitNome() {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
-		assertEquals(pista.getNomeArena(), "Pista");
+		assertEquals(pista.getNome(), "Pista");
 	}
 	
 	@Test
@@ -53,9 +52,9 @@ class ArenaTest {
 	void testArenaSetNome() {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
-		pista.setNomeArena("Arena");
+		pista.setNome("Arena");
 		
-		assertEquals(pista.getNomeArena(), "Arena");
+		assertEquals(pista.getNome(), "Arena");
 	}
 	
 	@Test
@@ -76,7 +75,8 @@ class ArenaTest {
 		List<Acomodacao> lista = new ArrayList<Acomodacao>();
 		lista.add(hotel);
 		lista.add(pousada);
-		pista.setAcomodacoes(lista);
+		pista.addAcomodacao(hotel);
+		pista.addAcomodacao(pousada);
 		
 		assertEquals(pista.getAcomodacoes().size(), 2);
 	}
@@ -107,9 +107,7 @@ class ArenaTest {
 		Arena pista = new Arena("Pista", 500, "Rua ABC");
 		
 		Transporte onibus = new Transporte("Onibus", "Rua A");
-		List<Transporte> lista = new ArrayList<Transporte>();
-		lista.add(onibus);
-		pista.setTransportes(lista);
+		pista.addTransporte(onibus);
 		
 		assertEquals(pista.getTransportes().size(), 1);
 	}

@@ -1,0 +1,7 @@
+TUTORIAL DE INSTALAÇÃO:
+
+Back-end:
+Executar o projeto quadribol api no eclipe e baixar via eclipe marketplace(é possível encontrar no menu help do ecplise)
+O String tools, a partir daí basta apenas executar.
+Front-end:
+Executar usando o node, é preciso apenas estar na pasta raiz e digitar npm start.

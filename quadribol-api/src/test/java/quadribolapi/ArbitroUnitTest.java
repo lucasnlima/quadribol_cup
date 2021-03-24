@@ -2,10 +2,6 @@ package quadribolapi;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import quadribolapi.domain.Arbitro;
@@ -24,12 +20,12 @@ class ArbitroUnitTest {
 		
 		//Ação
 		arb.setIdade(novaIdade);
-		arb.setNomeArbitro(novoNome);
+		arb.setNome(novoNome);
 		System.out.printf("\nTeste Unitário Arbitro - Depois das Modificações:");
 		arb.exibirInfoArbitro();
 		
 		//Verificação
-		assertEquals(arb.getNomeArbitro(), novoNome);
+		assertEquals(arb.getNome(), novoNome);
 		assertEquals(arb.getIdade(), novaIdade);
 		
 	}

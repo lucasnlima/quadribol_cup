@@ -11,25 +11,22 @@ public class Transporte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long ID_TRANSPORTE;
+	private Long id;
 	
 	@Column(nullable = false)
-	private final String TIPO_TRANSPORTE;
+	private String TIPO_TRANSPORTE;
 
     @Column(nullable = false)
 	private String enderecoTransporte;
 
-    private static int contadorTransporte = 0;
 
 	public Transporte(String tipo, String endereco){
-        this.ID_TRANSPORTE = (long) contadorTransporte;
-        contadorTransporte++;
         this.TIPO_TRANSPORTE = tipo;
         this.enderecoTransporte = endereco;
     }
     
     public Long getIdTransporte() {
-		return this.ID_TRANSPORTE;
+		return this.id;
 	}
 
 	public String getTipoTransporte() {

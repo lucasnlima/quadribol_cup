@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,17 +28,20 @@ public class Arena {
 
     @OneToMany
     private List<Acomodacao> acomodacoes;
+    
+    @OneToMany
+    private List<Transporte> transportes;
 
     public Arena() {
         super();
     }
     
-    public Arena(Long ide, String nom, int cap, String end, List<Acomodacao> acomodacoes) {
-        this.id = ide;
+    public Arena(String nom, int cap, String end) {
         this.nome = nom;
         this.capacidade = cap;
         this.endereco = end;
-        this.acomodacoes = acomodacoes;
+        this.acomodacoes = new ArrayList<Acomodacao>();
+        this.transportes =  new ArrayList<Transporte>();
     }
     
     public float getId() {
@@ -75,6 +79,18 @@ public class Arena {
     public void removeAcomodacao(Acomodacao aco) {
         this.acomodacoes.remove(aco);
     }
+    
+    public void addTransporte(Transporte transporte) {
+        this.transportes.add(transporte);
+    }
+
+    public void removeTransporte(Transporte transporte) {
+        this.transportes.remove(transporte);
+    }
+    
+    public List<Transporte> getTransportes() {
+        return this.transportes;
+    }
 
     public void exibirInfo() {
         
@@ -85,6 +101,9 @@ public class Arena {
         System.out.println("Acomodacoes: ");
         for(int i = 0; i < this.acomodacoes.size(); i++) {
             System.out.println(this.acomodacoes.get(i));
+        }
+        for(int i = 0; i < this.transportes.size(); i++) {
+            System.out.println(this.transportes.get(i));
         }
     }
 

@@ -21,11 +21,9 @@ public class Arbitro {
 
 	private static int contadorArbitro = 0;
 
-	public Arbitro(String nome, int idade){
-        this.ID_ARBITRO = (long) contadorArbitro;
-		contadorArbitro++;
-        this.nomeArbitro = nome;
-        this.idadeArbitro = idade;
+	public Arbitro(String nom, int idad) {
+        this.nome = nom;
+        this.idade = idad;
     }
     
     public Long getIdArbitro() {

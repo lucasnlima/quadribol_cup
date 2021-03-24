@@ -26,10 +26,11 @@ const useStyles = makeStyles((theme) => ({
 const GamesTable = () => {
   const classes = useStyles();
   const [jogosAtuais, setJogosAtuais] = useState([]);
+  const [jogosFinalizados, setJogosFinalizados] = useState([]);
 
-  const getTimesList = () => {
+  const getGamesA = () => {
     const url = process.env.REACT_APP_BACKEND_URL;
-    const rota = "/jogos";
+    const rota = "/jogos/ativos";
     axios.defaults.headers.post["Content-Type"] =
       "application/json;charset=utf-8";
     axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
@@ -41,9 +42,24 @@ const GamesTable = () => {
       .catch((err) => console.error(`Erro: ${err}`));
   };
 
+  const getGamesF = () => {
+    const url = process.env.REACT_APP_BACKEND_URL;
+    const rota = "/jogos/finalizados";
+    axios.defaults.headers.post["Content-Type"] =
+      "application/json;charset=utf-8";
+    axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+    axios
+      .get(url + rota)
+      .then((res) => {
+        setJogosFinalizados(res.data);
+      })
+      .catch((err) => console.error(`Erro: ${err}`));
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
-      getTimesList();
+      getGamesA();
+      getGamesF();
     }, 1000);
 
     return () => clearInterval(interval);
@@ -69,16 +85,12 @@ const GamesTable = () => {
           <h3> Jogos Anteriores</h3>
           <Card>
             <List aria-label="Jogos do momento">
-              <ListItem alignItems="center">TIME A 0 x 1 TIME B</ListItem>
-              <Divider />
-              <ListItem alignItems="center">TIME A 0 x 1 TIME B</ListItem>
-              <Divider />
-              <ListItem alignItems="center">TIME A 0 x 1 TIME B</ListItem>
-              <Divider />
-              <ListItem alignItems="center">TIME A 0 x 1 TIME B</ListItem>
-              <Divider />
-              <ListItem alignItems="center">TIME A 0 x 1 TIME B</ListItem>
-              <Divider />
+              {jogosFinalizados.map((jogo) => (
+                <>
+                  <ListItem alignItems="center">{`${jogo.timeA.nome} ${jogo.pontosA} x ${jogo.pontosA} ${jogo.timeB.nome}`}</ListItem>
+                  <Divider />
+                </>
+              ))}
             </List>
           </Card>
         </div>
