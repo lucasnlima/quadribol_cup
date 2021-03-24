@@ -10,30 +10,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import quadribolapi.domain.Time;
-import quadribolapi.repository.TimeRepository;
+import quadribolapi.domain.Arena;
+import quadribolapi.repository.ArenaRepository;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/times")
-public class EquipeController {
+@RequestMapping("/arenas")
+public class ArenaController {
 	
 	@Autowired
-	private TimeRepository timeRepository;
+	private ArenaRepository arenaRepository;
 	
 	@GetMapping
-	public List<Time> getTime() {
-		return timeRepository.findAll();
-	}
-	
-	@GetMapping("/{nome}")
-	public Time getEquipes(@PathVariable String nome) {
-		return timeRepository.getEquipeByNome(nome);
+	public List<Arena> getArena() {
+		return arenaRepository.findAll();
 	}
 	
 	@PostMapping
-	public Time createEquipe(@RequestBody Time time) {
-		return timeRepository.save(time);
+	public Arena createEquipe(@RequestBody Arena arena) {
+		return arenaRepository.save(arena);
 	}
 	
 }

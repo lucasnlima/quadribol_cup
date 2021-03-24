@@ -3,11 +3,11 @@ package quadribolapi.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import quadribolapi.domain.Equipe;
+import quadribolapi.domain.Time;
 
 @Repository
-public interface EquipeRepository extends JpaRepository<Equipe, Long> {
+public interface TimeRepository extends JpaRepository<Time, Long> {
 	
-	public Equipe getEquipeByNome(String nome);	
+	public Time getEquipeByNome(String nome);	
 	
 }

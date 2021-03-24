@@ -10,12 +10,12 @@ public class Classificacao {
 	@Id
 	private int posicao;
 	@OneToOne
-	private Equipe equipe;
+	private Time time;
 	
-	public Classificacao(int posicao, Equipe equipe) {
+	public Classificacao(int posicao, Time Time) {
 		super();
 		this.posicao = posicao;
-		this.equipe = equipe;
+		this.time = Time;
 	}
 	
 	 public Classificacao() {
@@ -24,16 +24,16 @@ public class Classificacao {
 
 	
 	public int getPosicao() {
-		return posicao;
+		return this.posicao;
 	}
 	public void setPosicao(int posicao) {
 		this.posicao = posicao;
 	}
-	public Equipe getEquipe() {
-		return equipe;
+	public Time getTime() {
+		return this.time;
 	}
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
+	public void setTime(Time time) {
+		this.time = time;
 	}
 
 }

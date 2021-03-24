@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -13,6 +13,7 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +41,26 @@ const useStyles = makeStyles((theme) => ({
 const Teams = () => {
   const classes = useStyles();
   const [currenTab, setCurrentTab] = useState();
+  const [times, setTimes] = useState([]);
+
+  const getTimesList = () => {
+    const url = process.env.REACT_APP_BACKEND_URL;
+    const rota = "/times";
+    axios.defaults.headers.post["Content-Type"] =
+      "application/json;charset=utf-8";
+    axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+    axios
+      .get(url + rota)
+      .then((res) => {
+        const times = res.data;
+        setTimes(times);
+      })
+      .catch((err) => console.error(`Erro: ${err}`));
+  };
+
+  useEffect(() => {
+    getTimesList();
+  }, []);
 
   const handleChangeTab = (event, value) => {
     setCurrentTab(value);
@@ -53,10 +74,9 @@ const Teams = () => {
           onChange={handleChangeTab}
           aria-label="simple tabs example"
         >
-          <Tab label="TIME A" />
-          <Tab label="TIME B" />
-          <Tab label="TIME C" />
-          <Tab label="TIME D" />
+          {times.map((time) => (
+            <Tab label={time.nome} />
+          ))}
         </Tabs>
       </AppBar>
       <Container className={classes.container}>

@@ -10,11 +10,11 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-public class PracaEsportiva {
+public class Arena {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private float id;
+	private long id;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -28,11 +28,11 @@ public class PracaEsportiva {
     @OneToMany
     private List<Acomodacao> acomodacoes;
 
-    public PracaEsportiva() {
+    public Arena() {
         super();
     }
     
-    public PracaEsportiva(Long ide, String nom, int cap, String end, List<Acomodacao> acomodacoes) {
+    public Arena(Long ide, String nom, int cap, String end, List<Acomodacao> acomodacoes) {
         this.id = ide;
         this.nome = nom;
         this.capacidade = cap;

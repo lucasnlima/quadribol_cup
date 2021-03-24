@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import quadribolapi.domain.Jogador;
-import quadribolapi.domain.Equipe;
+import quadribolapi.domain.Time;
 
 class EquipeUnitTest {
 
@@ -22,7 +22,7 @@ class EquipeUnitTest {
 		List<Jogador> elenco =  new ArrayList<Jogador>();
 		elenco.add(jogA);
 		
-		Equipe brasil = new Equipe(1,equipeName,elenco);
+		Time brasil = new Time(1,equipeName,elenco);
 		
 		//Ação
 		Jogador[] elencoResponse = (Jogador[]) brasil.getElenco();
@@ -38,7 +38,7 @@ class EquipeUnitTest {
 		String equipeName = "Brasil";
 		List<Jogador> elenco =  new ArrayList<Jogador>();
 		elenco.add(jogA);
-		Equipe brasil = new Equipe(1,equipeName,elenco);
+		Time brasil = new Time(1,equipeName,elenco);
 		
 		Jogador dida = new Jogador("Dida Potter",15,"Goleiro");
 			

@@ -3,9 +3,9 @@ package quadribolapi.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import quadribolapi.domain.PracaEsportiva;
+import quadribolapi.domain.Arena;
 
 @Repository
-public interface PracaEsportivaRepossitory extends JpaRepository<PracaEsportiva, Long> {
+public interface ArenaRepository extends JpaRepository<Arena, Long> {
 
 }

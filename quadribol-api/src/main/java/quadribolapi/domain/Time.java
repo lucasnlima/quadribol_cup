@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Equipe {
+public class Time {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +26,15 @@ public class Equipe {
 	
 	@ManyToMany
 	@JoinTable(name="historico_partidas", joinColumns =
-	{@JoinColumn(name="equipe_id")},inverseJoinColumns =
+	{@JoinColumn(name="Time_id")},inverseJoinColumns =
 	{@JoinColumn(name="jogo_id")})
 	private List<Jogo> historicoPartidas;
 	
-	public Equipe() {
+	public Time() {
 		super();
 	}
 	
-	public Equipe(int id, String nome, List<Jogador> elenco) {
+	public Time(int id, String nome, List<Jogador> elenco) {
 		this.id = id;
 		this.nome = nome;
 		this.elenco = elenco;

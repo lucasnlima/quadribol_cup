@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Card,
@@ -7,6 +7,11 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import image1 from "./images/1.png";
+import image2 from "./images/2.png";
+import image3 from "./images/3.png";
+import image4 from "./images/4.png";
+import axios from "axios";
 
 const useStyles = makeStyles({
   root: {
@@ -28,73 +33,50 @@ const useStyles = makeStyles({
 
 const Arenas = () => {
   const classes = useStyles();
+  const [arenas, setArenas] = useState([]);
+  const imageList = [image1, image2, image3, image4];
+
+  const getArenas = () => {
+    const url = process.env.REACT_APP_BACKEND_URL;
+    const rota = "/arenas";
+    axios.defaults.headers.post["Content-Type"] =
+      "application/json;charset=utf-8";
+    axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+    axios
+      .get(url + rota)
+      .then((res) => {
+        setArenas(res.data);
+      })
+      .catch((err) => console.error(`Erro: ${err}`));
+  };
+
+  useEffect(() => {
+    getArenas();
+  }, []);
 
   return (
     <Box className={classes.gridList}>
-      <Card className={classes.root}>
-        <CardMedia
-          className={classes.media}
-          // image="/static/images/cards/contemplative-reptile.jpg"
-          // title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Arena 1
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Endereços: USHASUHAUSHDA Descrição: JKSDHAKSJHDKAJSHDKASDAS Lotação:
-            SDKAJSDA Acomodações: lkdjalsdas Transporte: sdasdlasjlkda
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className={classes.root}>
-        <CardMedia
-          className={classes.media}
-          // image="/static/images/cards/contemplative-reptile.jpg"
-          // title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Arena 2
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Endereços: USHASUHAUSHDA Descrição: JKSDHAKSJHDKAJSHDKASDAS Lotação:
-            SDKAJSDA Acomodações: lkdjalsdas Transporte: sdasdlasjlkda
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className={classes.root}>
-        <CardMedia
-          className={classes.media}
-          // image="/static/images/cards/contemplative-reptile.jpg"
-          // title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Arena 3
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Endereços: USHASUHAUSHDA Descrição: JKSDHAKSJHDKAJSHDKASDAS Lotação:
-            SDKAJSDA Acomodações: lkdjalsdas Transporte: sdasdlasjlkda
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className={classes.root}>
-        <CardMedia
-          className={classes.media}
-          // image="/static/images/cards/contemplative-reptile.jpg"
-          // title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Arena 4
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Endereços: USHASUHAUSHDA Descrição: JKSDHAKSJHDKAJSHDKASDAS Lotação:
-            SDKAJSDA Acomodações: lkdjalsdas Transporte: sdasdlasjlkda
-          </Typography>
-        </CardContent>
-      </Card>
+      {arenas.map((arena) => (
+        <>
+          <Card className={classes.root}>
+            <CardMedia
+              className={classes.media}
+              image={imageList[arena.id]}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {arena.nome}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Endereço:{arena.endereco}
+                Lotação: {arena.capacidade}
+                Acomodações: {arena.acomodacoes}
+              </Typography>
+            </CardContent>
+          </Card>
+        </>
+      ))}
     </Box>
   );
 };
