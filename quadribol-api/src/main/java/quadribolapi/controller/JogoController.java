@@ -27,6 +27,16 @@ public class JogoController {
 		return jogoRepository.findAll();
 	}
 	
+	@GetMapping("/ativos")
+	public List<Jogo> getJogosAtivos() {
+		return jogoRepository.FindByFinalizado(false);
+	}
+	
+	@GetMapping("/finalizados")
+	public List<Jogo> getJogosFinalizados() {
+		return jogoRepository.FindByFinalizado(true);
+	}
+	
 	@PostMapping
 	public Jogo createJogo(@RequestBody Jogo jogo) {
 		return jogoRepository.save(jogo);

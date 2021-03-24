@@ -44,8 +44,7 @@ public class Jogo {
 	}
 
 
-	public Jogo(Long ide, String dat,Arena loc, Fase fase, Time partA, Time partB, Arbitro arb) {
-        this.id = ide;
+	public Jogo( String dat,Arena loc, Fase fase, Time partA, Time partB, Arbitro arb) {
         this.data = dat;
         this.local = loc;
         this.fase = fase;
@@ -147,10 +146,14 @@ public class Jogo {
 	 public void exibirInfoJogo() {
 	        
 	        System.out.printf("ID: 0x%016X", this.getId());
-	        System.out.printf("Participantes: %s x %s", this.getTimeA(), this.getTimeB()); // colocar nome da Time
+	        System.out.printf("Data: %s\n", this.getData());
 	        System.out.printf("Arbitro: %s", this.getArbitro().getNome());
 	        System.out.printf("Local: %s", this.getArena().getNome());
 	        System.out.printf("Placar:%s x %s", this.getPontosA(), this.getPontosB());
+	        System.out.printf("Time A: %s\n", this.getTimeA().getNome());
+	        System.out.printf("Pontos time A: %d\n", this.getPontosA());
+	        System.out.printf("Time B: %s\n", this.getTimeB().getNome());
+	        System.out.printf("Pontos time B: %d\n", this.getPontosB());
 
 	    }
 

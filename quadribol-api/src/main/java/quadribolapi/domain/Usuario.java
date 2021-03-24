@@ -11,7 +11,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	protected Long id;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -21,12 +21,14 @@ public class Usuario {
 
     @Column(nullable = false)
 	private String senha;
+    
+    private Boolean logado;
 
-	public Usuario(Long ide, String nom, String em, String sen){
-        this.id = ide;
+	public Usuario(String nom, String em, String sen){
         this.nome = nom;
         this.email = em;
         this.senha = sen;
+        this.logado = false;
     }
     
     public Long getId() {
@@ -55,6 +57,24 @@ public class Usuario {
 
     public void setSenha(String novas) {
         this.senha = novas;
+    }
+    
+    public boolean auth() {
+        return this.logado;
+    }
+    
+    public void login(String senha) {
+    	if(senha == this.senha)
+    		this.logado = true;
+    }
+    
+    public void logout() {
+        if(this.logado == true) {
+            this.logado = false;
+        }
+        else {
+            System.out.println("Usuario nao logado");
+        }
     }
 
 }

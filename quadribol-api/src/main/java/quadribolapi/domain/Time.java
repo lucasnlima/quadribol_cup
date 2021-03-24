@@ -1,5 +1,6 @@
 package quadribolapi.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,8 +35,12 @@ public class Time {
 		super();
 	}
 	
-	public Time(int id, String nome, List<Jogador> elenco) {
-		this.id = id;
+	public Time( String nome) {
+		this.nome = nome;
+		this.elenco = new ArrayList<Jogador>();
+	}
+	
+	public Time( String nome, List<Jogador> elenco) {
 		this.nome = nome;
 		this.elenco = elenco;
 	}
@@ -50,11 +55,11 @@ public class Time {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Object[] getElenco() {
-		return this.elenco.toArray();
+	public List<Jogador> getElenco() {
+		return this.elenco;
 	}
-	public void setElenco(Jogador[] elenco) {
-		this.elenco = Arrays.asList(elenco);
+	public void setElenco(List<Jogador> elenco) {
+		this.elenco = elenco;
 	}
 	
 	public void addJogador(Jogador jogador) {

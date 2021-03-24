@@ -23,8 +23,7 @@ public class Arbitro {
 		super();
 	}
 
-	public Arbitro(Long ide, String nom, int idad) {
-        this.id = ide;
+	public Arbitro(String nom, int idad) {
         this.nome = nom;
         this.idade = idad;
     }

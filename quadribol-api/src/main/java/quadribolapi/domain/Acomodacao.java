@@ -20,6 +20,11 @@ public class Acomodacao {
 		super();
 	}
 	
+	public Acomodacao(String nome, String endereco){
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+	
 	public float getId() {
 		return id;
 	}
@@ -42,6 +47,12 @@ public class Acomodacao {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	
+	public void exibirInfoAcomodacao () {
+		System.out.printf("ID: 0x%016X", this.getId());
+        System.out.printf("Nome: %s", this.getNome());
+        System.out.printf("Endereco: %s", this.getEndereco());
 	}
 	
 
